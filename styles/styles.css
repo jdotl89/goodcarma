@@ -1,0 +1,16 @@
+body{
+    background: lightgray;
+}
+
+.err {
+    color: darkred;
+}
+
+#car{
+    width: 100%;
+    border: 3px solid black;
+}
+h1{
+    font-size: 5em;
+    text-align: center;
+}
