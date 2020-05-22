@@ -41,7 +41,7 @@ class Controller
             //["food"]=>"tacos" ["meal"]=>"lunch"
 
             //Validate food
-            if (!$this->_validator->validFood($_POST['food'])) {
+            /*if (!$this->_validator->validFood($_POST['food'])) {
 
                 //Set an error variable in the F3 hive
                 $this->_f3->set('errors["food"]', "Invalid food item");
@@ -70,6 +70,11 @@ class Controller
         $this->_f3->set('meals', getMeals());
         $this->_f3->set('food', $_POST['food']);
         $this->_f3->set('selectedMeal', $_POST['meal']);
+        */
+
+        $this->_f3->reroute('order2');
+}
+
         $view = new Template();
         echo $view->render('views/orderForm.html');
     }
@@ -82,16 +87,15 @@ class Controller
         $conds = getCondiments();
 
         //If the form has been submitted
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        /*if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             //Add the data to the object in the session array
             $_SESSION['order']->setCondiments($_POST['conds']);
-
+        */
             //Redirect to summary page
             $this->_f3->reroute('summary');
-        }
+       //}
 
-        $this->_f3->set('conds', $conds);
         $view = new Template();
         echo $view->render('views/orderForm2.html');
     }
