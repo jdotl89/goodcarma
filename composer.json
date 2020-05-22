@@ -1,0 +1,23 @@
+{
+  "name": "mgulchuk/328/goodcarma",
+  "authors": [
+    {
+      "name": "Michael Gulchuk",
+      "email": "mgulchuk@mail.greenriver.edu"
+    },
+    {
+      "name": "John Laygo",
+      "email": "jlaygo@mail.greenriver.edu"
+    },
+    {
+      "name": "Amardip Kaur",
+      "email": "akaur66@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["classes/", "model/", "controllers/"]
+  }
+}
