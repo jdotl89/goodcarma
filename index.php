@@ -17,7 +17,7 @@ $validator = new Validate();
 $controller = new Controller($f3, $validator);
 
 //Default route
-$f3->route('GET /', function() {
+$f3->route('GET|POST /', function() {
     $GLOBALS['controller']->home();
 });
 
