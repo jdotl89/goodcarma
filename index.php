@@ -26,6 +26,11 @@ $f3->route('GET|POST /order', function() {
     $GLOBALS['controller']->order();
 });
 
+//vehicle information form route
+$f3->route('GET|POST /vehicleForm', function() {
+    $GLOBALS['controller']->vehicleForm();
+});
+
 //Order2 route
 $f3->route('GET|POST /order2', function() {
     $GLOBALS['controller']->order2();

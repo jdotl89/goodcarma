@@ -37,8 +37,6 @@ class Controller
     {
         //If the form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            var_dump($_POST);
-            //["food"]=>"tacos" ["meal"]=>"lunch"
 
             //Validate food
             /*if (!$this->_validator->validFood($_POST['food'])) {
@@ -72,11 +70,58 @@ class Controller
         $this->_f3->set('selectedMeal', $_POST['meal']);
         */
 
-        $this->_f3->reroute('order2');
+        $this->_f3->reroute('vehicleForm');
 }
 
         $view = new Template();
         echo $view->render('views/orderForm.html');
+    }
+
+    /**
+     * Process the order route
+     */
+    public function vehicleForm()
+    {
+        //If the form has been submitted
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            //Validate food
+            /*if (!$this->_validator->validFood($_POST['food'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["food"]', "Invalid food item");
+            }
+            if (!$this->_validator->validMeal($_POST['meal'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["meal"]', "Invalid meal.");
+            }
+            //Data is valid
+            if (empty($this->_f3->get('errors'))) {
+
+                //Create an order object
+                $order = new FoodOrder();
+                $order->setFood($_POST['food']);
+                $order->setMeal($_POST['meal']);
+
+                //Store the object in the session array
+                $_SESSION['order'] = $order;
+
+                //Redirect to Order 2 page
+                $this->_f3->reroute('order2');
+            }
+        }
+
+        $this->_f3->set('meals', getMeals());
+        $this->_f3->set('food', $_POST['food']);
+        $this->_f3->set('selectedMeal', $_POST['meal']);
+        */
+
+            $this->_f3->reroute('order2');
+        }
+
+        $view = new Template();
+        echo $view->render('views/vehicleForm.html');
     }
 
     /**

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Vehicle Information</title>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{ @BASE }}">Home</a>
+</nav>
+
+<form id="personal" method="post" action="#">
+    <div class="container border border-dark mt-3">
+        <br>
+        <h3>Vehicle Information</h3>
+        <hr>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <label for="vin"><strong>VIN</strong></label>
+                    <input type="text" class="form-control" id="vin" name="vin" value="{{ @vin }}" >
+                    <span class="err">
+                        <check if="{{ isset(@errors['vin']) }}">
+                            {{ @errors['vin'] }}
+                        </check>
+                    </span>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="model"><strong>Model</strong></label>
+                    <input type="text" class="form-control" id="model" name="model" value="{{ @model }}">
+                    <span class="err">
+                        <check if="{{ isset(@errors['model']) }}">
+                            {{ @errors['model'] }}
+                        </check>
+                    </span>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="make"><strong>Make</strong></label>
+                    <input type="text" class="form-control" id="make" name="make" value="{{ @make }}">
+                    <span class="err">
+                        <check if="{{ isset(@errors['make']) }}">
+                            {{ @errors['last'] }}
+                        </check>
+                    </span>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="year"><strong>Year</strong></label>
+                    <input type="text" class="form-control" id="year" name="year" value="{{ @year }}" >
+                    <span class="err">
+                    <check if="{{ isset(@errors['year']) }}">
+                        {{ @errors['year'] }}
+                    </check>
+                </span>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="color"><strong>Color</strong></label>
+                    <input type="text" class="form-control" id="color" name="color" value="{{ @color }}">
+                    <span class="err">
+                        <check if="{{ isset(@errors['color']) }}">
+                            {{ @errors['color'] }}
+                        </check>
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+        <br>
+
+        <div class="form-row">
+            <div class="form-group col-md-10 offset-10">
+                <button type="submit" class="btn btn-primary" id="button">Next ></button>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
