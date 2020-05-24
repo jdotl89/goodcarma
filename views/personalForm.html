@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Personal Information</title>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{ @BASE }}">Home</a>
+</nav>
+
+<form id="personal" method="post" action="#">
+    <div class="container border border-dark mt-3">
+        <br>
+        <h3>Personal Information</h3>
+        <hr>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="firstName"><strong>First Name</strong></label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" value="{{ @firstName }}">
+                    <span class="err">
+                        <check if="{{ isset(@errors['firstName']) }}">
+                            {{ @errors['firstName'] }}
+                        </check>
+                    </span>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="lastName"><strong>Last Name</strong></label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" value="{{ @lastName }}">
+                    <span class="err">
+                        <check if="{{ isset(@errors['lastName']) }}">
+                            {{ @errors['lastName'] }}
+                        </check>
+                    </span>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="age"><strong>Age</strong></label>
+                    <input type="text" class="form-control" id="age" name="age" value="{{ @age }}" >
+                    <span class="err">
+                    <check if="{{ isset(@errors['age']) }}">
+                        {{ @errors['age'] }}
+                    </check>
+                </span>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="phone"><strong>Phone Number</strong></label>
+                    <input type="text" class="form-control" id="phone" name="phone" value="{{ @phone }}" >
+                    <span class="err">
+                        <check if="{{ isset(@errors['phone']) }}">
+                            {{ @errors['phone'] }}
+                        </check>
+                    </span>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <label for="email"><strong>Email</strong></label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ @email}}">
+                    <span class="err">
+                        <check if="{{ isset(@errors['email']) }}">
+                            {{ @errors['email'] }}
+                        </check>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="form-row">
+            <div class="form-group col-md-10 offset-10">
+                <button type="submit" class="btn btn-primary" id="button">Next ></button>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

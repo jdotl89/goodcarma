@@ -56,28 +56,45 @@ class Validate
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
-    /* Return a value indicating if meal is valid
-       Valid meals are breakfast, lunch and dinner
-       @param String $meal
-       @return boolean
-    */
-    function validMeal($meal)
+    /* Return a value indicating if vin is valid
+      Valid vin is 17 characters long
+      @param String $vin
+      @return boolean
+   */
+    function validVIN($vin)
     {
-        $meals = getMeals();
-        return in_array($meal, $meals);
+        $vin = str_replace(' ', '', $vin); //remove white space
+                //17 characters      //numeric
+        return (strlen($vin) == 17 && is_numeric($vin));  // 1 if true
+    }
+
+    /* Return a value indicating if model is valid
+      Valid model is choosing correct option
+      @param String $model
+      @return boolean
+   */
+    function validModel($model)
+    {
+        return (in_array($model, getModels()));
+    }
+
+    /* Return a value indicating if year is valid
+     Valid year is choosing correct option
+     @param String $year
+     @return boolean
+  */
+    function validYear($year)
+    {
+        return (in_array($year, getYears()));
+    }
+
+    /* Return a value indicating if color is valid
+     Valid color is choosing correct option
+     @param String $color
+     @return boolean
+  */
+    function validColor($color)
+    {
+        return (in_array($color, getColors()));
     }
 }
-
-    /*
-    echo validMeal('breakfast') ? "yes<br>" : "no<br>";
-    echo validMeal('') ? "yes<br>" : "no<br>";
-    echo validMeal('dessert') ? "yes<br>" : "no<br>";
-    echo validMeal('lunch') ? "yes<br>" : "no<br>";
-    */
-
-    /* for testing purposes only
-    echo validFood("french fries") ? "yes<br>" : "no<br>";
-    echo validFood("pizza") ? "yes<br>" : "no<br>";
-    echo validFood("7-layer dip") ? "yes<br>" : "no<br>";
-    echo validFood("") ? "yes<br>" : "no<br>";
-    */

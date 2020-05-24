@@ -22,8 +22,8 @@ $f3->route('GET|POST /', function() {
 });
 
 //Order route
-$f3->route('GET|POST /order', function() {
-    $GLOBALS['controller']->order();
+$f3->route('GET|POST /personal', function() {
+    $GLOBALS['controller']->personal();
 });
 
 //vehicle information form route

@@ -31,7 +31,7 @@ class Controller
     /**
      * Process the personal information route
      */
-    public function order()
+    public function personal()
     {
         //If the form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -52,7 +52,7 @@ class Controller
                 //Set an error variable in the F3 hive
                 $this->_f3->set('errors["age"]', "Enter correct age. Must be 18 or older");
             }
-            if (!$this->_validator->validPhone($_POST['phone'])) {
+            if (!empty($_POST['phone']) && !$this->_validator->validPhone($_POST['phone'])) {
 
                 //Set an error variable in the F3 hive
                 $this->_f3->set('errors["phone"]', "Please enter correct number");
@@ -91,51 +91,69 @@ class Controller
         $this->_f3->set('email', $_POST['email']);
 
         $view = new Template();
-        echo $view->render('views/orderForm.html');
+        echo $view->render('views/personalForm.html');
     }
 
     /**
-     * Process the order route
+     * Process the vehicle information form route
      */
     public function vehicleForm()
     {
+        $this->_f3->set('allModels', getModels());
+        $this->_f3->set('allMakes', getMakes());
+        $this->_f3->set('allYears', getYears());
+        $this->_f3->set('allColors', getColors());
+
         //If the form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            //Validate food
-            /*if (!$this->_validator->validFood($_POST['food'])) {
+            //Validate
+            if (!$this->_validator->validVIN($_POST['vin'])) {
 
                 //Set an error variable in the F3 hive
-                $this->_f3->set('errors["food"]', "Invalid food item");
+                $this->_f3->set('errors["vin"]', "Please enter correct VIN");
             }
-            if (!$this->_validator->validMeal($_POST['meal'])) {
+            if (!$this->_validator->validModel($_POST['model'])) {
 
                 //Set an error variable in the F3 hive
-                $this->_f3->set('errors["meal"]', "Invalid meal.");
+                $this->_f3->set('errors["model"]', "Incorrect model selection");
+            }
+            if (!$this->_validator->validYear($_POST['year'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["year"]', "Incorrect year selection");
+            }
+            if (!$this->_validator->validColor($_POST['color'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["color"]', "Incorrect color selection");
             }
             //Data is valid
             if (empty($this->_f3->get('errors'))) {
 
-                //Create an order object
-                $order = new FoodOrder();
-                $order->setFood($_POST['food']);
-                $order->setMeal($_POST['meal']);
+                //Create object   ////saved in session for now ////
+                $_SESSION['vin'] = $_POST['vin'];
+                $_SESSION['model'] = $_POST['model'];
+                $_SESSION['year'] = $_POST['year'];
+                $_SESSION['color'] = $_POST['color'];
 
-                //Store the object in the session array
-                $_SESSION['order'] = $order;
+//                //Create an order object
+//                $order = new FoodOrder();
+//                $order->setFood($_POST['food']);
+//                $order->setMeal($_POST['meal']);
+//
+//                //Store the object in the session array
+//                $_SESSION['order'] = $order;
 
                 //Redirect to Order 2 page
                 $this->_f3->reroute('order2');
             }
         }
 
-        $this->_f3->set('meals', getMeals());
-        $this->_f3->set('food', $_POST['food']);
-        $this->_f3->set('selectedMeal', $_POST['meal']);
-        */
-
-            $this->_f3->reroute('order2');
-        }
+        $this->_f3->set('selectedVIN', $_POST['vin']);
+        $this->_f3->set('selectedModel', $_POST['model']);
+        $this->_f3->set('selectedYear', $_POST['year']);
+        $this->_f3->set('selectedColor', $_POST['color']);
 
         $view = new Template();
         echo $view->render('views/vehicleForm.html');

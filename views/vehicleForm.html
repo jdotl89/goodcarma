@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col">
                     <label for="vin"><strong>VIN</strong></label>
-                    <input type="text" class="form-control" id="vin" name="vin" value="{{ @vin }}" >
+                    <input type="text" class="form-control" id="vin" name="vin" value="{{ @selectedVIN }}" >
                     <span class="err">
                         <check if="{{ isset(@errors['vin']) }}">
                             {{ @errors['vin'] }}
@@ -36,8 +36,17 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <label for="model"><strong>Model</strong></label>
-                    <input type="text" class="form-control" id="model" name="model" value="{{ @model }}">
+                    <label for="model"><strong>Model</strong></label><br>
+                    <select class="form-control" id="model" name="model">
+                        <option value="none">Please select</option><br>
+                        <repeat group="{{ @allModels}}" value="{{ @model}}">
+                            <option value="{{ @model }}"
+                            <check if="{{ @model == @selectedModel }}" >
+                                selected="selected"
+                            </check>
+                            >{{ ucfirst(@model) }}</option>><br>
+                        </repeat>
+                    </select>
                     <span class="err">
                         <check if="{{ isset(@errors['model']) }}">
                             {{ @errors['model'] }}
@@ -46,38 +55,64 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label for="make"><strong>Make</strong></label>
-                    <input type="text" class="form-control" id="make" name="make" value="{{ @make }}">
+                    <label for="make"><strong>Make</strong></label><br>
+                    <select class="form-control" id="make" name="make">
+                        <option value="none">---</option><br>
+                        <repeat group="{{ @allMakes }}" value="{{ @make}}">
+                            <option value="{{ @make }}"
+                            <check if="{{ @make == @selectedMake }}" >
+                                selected="selected"
+                            </check>
+                            >{{ ucfirst(@make) }}</option>><br>
+                        </repeat>
+                    </select>
                     <span class="err">
                         <check if="{{ isset(@errors['make']) }}">
-                            {{ @errors['last'] }}
+                            {{ @errors['make'] }}
                         </check>
                     </span>
                 </div>
 
                 <div class="col-md-4">
-                    <label for="year"><strong>Year</strong></label>
-                    <input type="text" class="form-control" id="year" name="year" value="{{ @year }}" >
+                    <label for="year"><strong>Year</strong></label><br>
+                    <select class="form-control" id="year" name="year">
+                        <option value="none">---</option><br>
+                        <repeat group="{{ @allYears }}" value="{{ @year}}">
+                            <option value="{{ @year }}"
+                            <check if="{{ @year == @selectedYear }}" >
+                                selected="selected"
+                            </check>
+                            >{{ ucfirst(@year) }}</option>><br>
+                        </repeat>
+                    </select>
                     <span class="err">
-                    <check if="{{ isset(@errors['year']) }}">
-                        {{ @errors['year'] }}
-                    </check>
-                </span>
+                        <check if="{{ isset(@errors['year']) }}">
+                            {{ @errors['year'] }}
+                        </check>
+                    </span>
                 </div>
             </div>
             <br>
 
             <div class="row">
-                <div class="col-md-6">
-                    <label for="color"><strong>Color</strong></label>
-                    <input type="text" class="form-control" id="color" name="color" value="{{ @color }}">
+                <div class="col-md-4">
+                    <label for="color"><strong>Color</strong></label><br>
+                    <select class="form-control" id="color" name="color">
+                        <option value="none">---</option><br>
+                        <repeat group="{{ @allColors }}" value="{{ @color}}">
+                            <option value="{{ @color }}"
+                            <check if="{{ @color == @selectedColor }}" >
+                                selected="selected"
+                            </check>
+                            >{{ ucfirst(@color) }}</option>><br>
+                        </repeat>
+                    </select>
                     <span class="err">
                         <check if="{{ isset(@errors['color']) }}">
                             {{ @errors['color'] }}
                         </check>
                     </span>
                 </div>
-
             </div>
 
         </div>
