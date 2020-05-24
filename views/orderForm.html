@@ -24,20 +24,20 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="firstName"><strong>First Name</strong></label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" value="{{ @first }}">
+                    <input type="text" class="form-control" id="firstName" name="firstName" value="{{ @firstName }}">
                     <span class="err">
-                        <check if="{{ isset(@errors['first']) }}">
-                            {{ @errors['first'] }}
+                        <check if="{{ isset(@errors['firstName']) }}">
+                            {{ @errors['firstName'] }}
                         </check>
                     </span>
                 </div>
 
                 <div class="col-md-6">
                     <label for="lastName"><strong>Last Name</strong></label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" value="{{ @last }}">
+                    <input type="text" class="form-control" id="lastName" name="lastName" value="{{ @lastName }}">
                     <span class="err">
-                        <check if="{{ isset(@errors['last']) }}">
-                            {{ @errors['last'] }}
+                        <check if="{{ isset(@errors['lastName']) }}">
+                            {{ @errors['lastName'] }}
                         </check>
                     </span>
                 </div>
@@ -57,10 +57,10 @@
 
                 <div class="col-md-6">
                     <label for="phone"><strong>Phone Number</strong></label>
-                    <input type="text" class="form-control" id="phone" name="phone" value="{{ @num }}" >
+                    <input type="text" class="form-control" id="phone" name="phone" value="{{ @phone }}" >
                     <span class="err">
-                        <check if="{{ isset(@errors['num']) }}">
-                            {{ @errors['num'] }}
+                        <check if="{{ isset(@errors['phone']) }}">
+                            {{ @errors['phone'] }}
                         </check>
                     </span>
                 </div>
