@@ -10,6 +10,18 @@ body{
     width: 100%;
     border: 3px solid black;
 }
+
+#para{
+    font-size: 20px;
+}
+
+#button{
+    background-color: black;
+    border-color: black;
+    font-size: 25px;
+    border-radius: 12px;
+}
+
 h1{
     font-size: 5em;
     text-align: center;
