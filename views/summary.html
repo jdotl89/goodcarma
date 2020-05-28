@@ -1,19 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Welcome to My Food Page</title>
     <include href="includes/header.htm"></include>
+    <title>Summary</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Order Summary</h1>
-        <p>Thank you for ordering {{ @SESSION.order->getFood() }} for {{ @SESSION.order->getMeal() }}</p>
-        <check if="{{ !empty(@SESSION.order->getCondiments()) }}">
-            <p>Condiments:  {{ implode(@SESSION.order->getCondiments(), ", ") }}</p>
-        </check>
-
-        <a href="order">Place another order</a><br>
-        <a href="{{ @BASE }}">Home page</a>
-    </div>
+<form action="#">
+        <div class="container border border-dark">
+            <nav class="navbar navbar-dark bg-dark">
+                <a class="navbar-brand" href="{{ @BASE }}">Home</a>
+            </nav>
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div class="card" style="width: 34rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</li>
+                            <li class="list-group-item">Age: {{ @SESSION.age }}</li>
+                            <li class="list-group-item">Phone: {{ @SESSION.phone }}</li>
+                            <li class="list-group-item">Email: {{ @SESSION.email }}</li>
+                            <li class="list-group-item">VIN: {{ @SESSION.vin }}</li>
+                            <li class="list-group-item">Model: {{ @SESSION.model }}</li>
+                            <li class="list-group-item">Make: {{ @SESSION.make }}</li>
+                            <li class="list-group-item">Year: {{ @SESSION.year }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card" style="width: 34rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Color: {{ @SESSION.color }}</li>
+                            <li class="list-group-item">Engine: {{ @SESSION.color }}</li>
+                            <li class="list-group-item">Transmission: {{ @SESSION.color }}</li>
+                            <li class="list-group-item">Drive Terrain: {{ @SESSION.color }}</li>
+                            <li class="list-group-item">Material: {{ @SESSION.color }}</li>
+                            <li class="list-group-item">Seats: {{ @SESSION.color }}</li>
+                            <li class="list-group-item">Infotainment: </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class= "form-group" id="btn">
+                <button type="submit" class="btn btn-primary" id="button">Create new vehicle</button>
+            </div>
+        </div>
+</form>
 </body>
 </html>

@@ -180,13 +180,13 @@ class Controller
         $this->_f3->set('selectedInfotainment', $_POST['infotainment']);
 
         //If the form has been submitted
-        /*if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Add the data to the object in the session array
-            $_SESSION['order']->setCondiments($_POST['conds']);
-        */
+            //$_SESSION['order']->setCondiments($_POST['conds']);
+
         //Redirect to summary page
-        //$this->_f3->reroute('summary');
-        //}
+        $this->_f3->reroute('summary');
+        }
 
         $view = new Template();
         echo $view->render('views/engineInterior.html');
