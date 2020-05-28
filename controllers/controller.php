@@ -146,7 +146,7 @@ class Controller
 //                $_SESSION['order'] = $order;
 
                 //Redirect to Order 2 page
-                $this->_f3->reroute('order2');
+                $this->_f3->reroute('engineInterior');
             }
         }
 
