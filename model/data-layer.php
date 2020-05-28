@@ -73,4 +73,65 @@
     {
         $colors = array('White', 'Silver', 'Black', 'Red', 'Grey', 'Blue');
         return $colors;
-}
+    }
+
+    // FOR THE INSIDE CLASS ------------------------------------------------------------------------------------------
+    /* getEngine()
+    * Returns an array of engine sizes
+    * @return array
+    */
+    function getEngine()
+    {
+        $engine = array('4 cylinder', '6 cylinder', '8 cylinder', '10 cyclinder', '12 cylinder');
+        return $engine;
+    }
+
+    /* getTransmission()
+    * Returns an array of transmission modes
+    * @return array
+    */
+    function getTransmission()
+    {
+        $trans = array('manual', 'automatic');
+        return $trans;
+    }
+
+    /* getTerrain()
+    * Returns an array of terrain modes
+    * @return array
+    */
+    function getTerrain()
+    {
+        $terrain = array('rear wheel drive', 'front wheel drive', 'all wheel drive');
+        return $terrain;
+    }
+
+    /* getMaterial()
+    * Returns an array of materials
+    * @return array
+    */
+    function getMaterial()
+    {
+        $material = array('cotton','suede', 'sythetic leather', 'leather');
+        return $material;
+    }
+
+    /* getInfortainment()
+    * Returns an array of stereo modes
+    * @return array
+    */
+    function getInfotainment()
+    {
+        $infotainment = array('stock stereo', 'premium sound', 'apple carplay', 'navigation', 'android auto', 'apps');
+        return $infotainment;
+    }
+
+    /* getSeats()
+       * Returns an array of seat numbers
+       * @return array
+       */
+    function getSeats()
+    {
+        $seats = array(1,2, 3, 4, 5, 6, 7);
+        return $seats;
+    }

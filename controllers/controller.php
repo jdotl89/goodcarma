@@ -162,19 +162,31 @@ class Controller
     /**
      *
      */
-    public function order2()
+    public function engineInterior()
     {
-        $conds = getCondiments();
+        $this->_f3->set('engine', getEngine());
+        $this->_f3->set('transmission', getTransmission());
+        $this->_f3->set('terrain', getTerrain());
+        $this->_f3->set('material', getMaterial());
+        $this->_f3->set('infotainment', getInfotainment());
+        $this->_f3->set('seats', getSeats());
+
+        // selected
+        $this->_f3->set('selectedEngine', $_POST['engine']);
+        $this->_f3->set('selectedTransmission', $_POST['transmission']);
+        $this->_f3->set('selectedTerrain', $_POST['terrain']);
+        $this->_f3->set('selectedMaterial', $_POST['material']);
+        $this->_f3->set('selectedSeats', $_POST['seats']);
+        $this->_f3->set('selectedInfotainment', $_POST['infotainment']);
 
         //If the form has been submitted
         /*if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             //Add the data to the object in the session array
             $_SESSION['order']->setCondiments($_POST['conds']);
         */
-            //Redirect to summary page
-            $this->_f3->reroute('summary');
-       //}
+        //Redirect to summary page
+        //$this->_f3->reroute('summary');
+        //}
 
         $view = new Template();
         echo $view->render('views/engineInterior.html');
