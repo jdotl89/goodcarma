@@ -32,12 +32,12 @@ $f3->route('GET|POST /vehicleForm', function() {
 });
 
 //Order2 route
-$f3->route('GET|POST /order2', function() {
-    $GLOBALS['controller']->order2();
+$f3->route('GET|POST /engineInterior', function() {
+    $GLOBALS['controller']->engineInterior();
 });
 
 //Breakfast route
-$f3->route('GET /summary', function() {
+$f3->route('GET|POST /summary', function() {
     $GLOBALS['controller']->summary();
 });
 

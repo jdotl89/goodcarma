@@ -197,7 +197,6 @@ class Controller
      */
     public function summary()
     {
-        //echo '<h1>Thank you for your order!</h1>';
 
         $view = new Template();
         echo $view->render('views/summary.html');
