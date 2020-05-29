@@ -185,6 +185,12 @@ class Controller
             //$_SESSION['order']->setCondiments($_POST['conds']);
 
         //Redirect to summary page
+        $_SESSION['engine'] = $_POST['engine'];
+        $_SESSION['transmission'] = $_POST['transmission'];
+        $_SESSION['terrain'] = $_POST['terrain'];
+        $_SESSION['material'] = $_POST['material'];
+        $_SESSION['seats'] = $_POST['seats'];
+        $_SESSION['infotainment'] = $_POST['infotainment'];
         $this->_f3->reroute('summary');
         }
 

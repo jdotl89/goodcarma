@@ -12,7 +12,7 @@
             </nav>
             <br>
             <h2>Thank you for completing our form</h2>
-            <h4>Here are your car choices</h4>
+            <h4>Here are your car features</h4>
             <div class="row">
                 <div class="col-6">
                     <div class="card" style="width: 34rem;">
@@ -32,12 +32,13 @@
                     <div class="card" style="width: 34rem;">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Color: {{ @SESSION.color }}</li>
-                            <li class="list-group-item">Engine: {{ @SESSION.color }}</li>
-                            <li class="list-group-item">Transmission: {{ @SESSION.color }}</li>
-                            <li class="list-group-item">Drive Terrain: {{ @SESSION.color }}</li>
-                            <li class="list-group-item">Material: {{ @SESSION.color }}</li>
-                            <li class="list-group-item">Seats: {{ @SESSION.color }}</li>
-                            <li class="list-group-item">Infotainment: </li>
+                            <li class="list-group-item">Engine: {{ @SESSION.engine }}</li>
+                            <li class="list-group-item">Transmission: {{ @SESSION.transmission }}</li>
+                            <li class="list-group-item">Drive Terrain: {{ @SESSION.terrain }}</li>
+                            <li class="list-group-item">Material: {{ @SESSION.material }}</li>
+                            <li class="list-group-item">Seats: {{ @SESSION.seats }}</li>
+                            <li class="list-group-item"><check if="{{ isset(@SESSION.infotainment) }}">
+                                Infotainment: {{ implode(@SESSION.infotainment, ", ") }}</check></li>
                         </ul>
                     </div>
                 </div>

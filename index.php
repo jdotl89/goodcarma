@@ -1,42 +1,42 @@
 <?php
 
-//Turn on error reporting
+// Turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-//Require the autoload file
+// Require the autoload file
 require_once("vendor/autoload.php");
 require_once("model/data-layer.php");
 
-//Start a session AFTER requiring autoload.php
+// Start a session AFTER requiring autoload.php
 session_start();
 
-//Instantiate my classes
+// Instantiate my classes
 $f3 = Base::instance();
 $validator = new Validate();
 $controller = new Controller($f3, $validator);
 
-//Default route
+// Default route
 $f3->route('GET|POST /', function() {
     $GLOBALS['controller']->home();
 });
 
-//Order route
+//  personal route
 $f3->route('GET|POST /personal', function() {
     $GLOBALS['controller']->personal();
 });
 
-//vehicle information form route
+// vehicle information form route
 $f3->route('GET|POST /vehicleForm', function() {
     $GLOBALS['controller']->vehicleForm();
 });
 
-//Order2 route
+// engine interior
 $f3->route('GET|POST /engineInterior', function() {
     $GLOBALS['controller']->engineInterior();
 });
 
-//Breakfast route
+// summary route
 $f3->route('GET|POST /summary', function() {
     $GLOBALS['controller']->summary();
 });
