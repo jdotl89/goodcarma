@@ -28,6 +28,16 @@ class Controller
         echo $view->render('views/home.html');
     }
 
+    public function motor()
+    {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->_f3->reroute('personal');
+        }
+
+        $view = new Template();
+        echo $view->render('views/motorcycle.html');
+    }
+
     /**
      * Process the personal information route
      */
