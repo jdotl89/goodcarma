@@ -122,7 +122,7 @@
     */
     function getInfotainment()
     {
-        $infotainment = array('stock stereo', 'premium sound', 'apple carplay', 'navigation', 'android auto', 'apps');
+        $infotainment = array('None', 'stock stereo', 'premium sound', 'apple carplay', 'navigation', 'android auto', 'apps');
         return $infotainment;
     }
 

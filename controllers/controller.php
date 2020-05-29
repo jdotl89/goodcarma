@@ -171,6 +171,57 @@ class Controller
         $this->_f3->set('infotainment', getInfotainment());
         $this->_f3->set('seats', getSeats());
 
+        //If the form has been submitted
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Add the data to the object in the session array
+            //$_SESSION['order']->setCondiments($_POST['conds']);
+
+            //Validate
+            if (!$this->_validator->validEngine($_POST['engine'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["engine"]', "Please select an engine");
+            }
+            if (!$this->_validator->validTransmission($_POST['transmission'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["transmission"]', "Please select a transmission");
+            }
+            if (!$this->_validator->validTerrain($_POST['terrain'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["terrain"]', "Please select a drive terrain");
+            }
+            if (!$this->_validator->validMaterial($_POST['material'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["material"]', "Please select material");
+            }
+            if (!$this->_validator->validInfotainment($_POST['infotainment'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["infotainment"]', "Please select infotainment option");
+            }
+            if (!$this->_validator->validSeats($_POST['seats'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["seats"]', "Please select how many seats");
+            }
+
+            //Data is valid
+            if (empty($this->_f3->get('errors'))) {
+
+                //Redirect to summary page
+                $_SESSION['engine'] = $_POST['engine'];
+                $_SESSION['transmission'] = $_POST['transmission'];
+                $_SESSION['terrain'] = $_POST['terrain'];
+                $_SESSION['material'] = $_POST['material'];
+                $_SESSION['seats'] = $_POST['seats'];
+                $_SESSION['infotainment'] = $_POST['infotainment'];
+                $this->_f3->reroute('summary');
+            }
+        }
+
         // selected
         $this->_f3->set('selectedEngine', $_POST['engine']);
         $this->_f3->set('selectedTransmission', $_POST['transmission']);
@@ -178,21 +229,6 @@ class Controller
         $this->_f3->set('selectedMaterial', $_POST['material']);
         $this->_f3->set('selectedSeats', $_POST['seats']);
         $this->_f3->set('selectedInfotainment', $_POST['infotainment']);
-
-        //If the form has been submitted
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //Add the data to the object in the session array
-            //$_SESSION['order']->setCondiments($_POST['conds']);
-
-        //Redirect to summary page
-        $_SESSION['engine'] = $_POST['engine'];
-        $_SESSION['transmission'] = $_POST['transmission'];
-        $_SESSION['terrain'] = $_POST['terrain'];
-        $_SESSION['material'] = $_POST['material'];
-        $_SESSION['seats'] = $_POST['seats'];
-        $_SESSION['infotainment'] = $_POST['infotainment'];
-        $this->_f3->reroute('summary');
-        }
 
         $view = new Template();
         echo $view->render('views/engineInterior.html');

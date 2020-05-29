@@ -97,4 +97,78 @@ class Validate
     {
         return (in_array($color, getColors()));
     }
+
+    // FOR THE INSIDE CLASS ------------------------------------------------------------------------------------------
+    /* Return a value indicating if engine is valid
+     Valid engine is choosing correct option
+     @param String $engine
+     @return boolean
+    */
+    function validEngine($engine)
+    {
+        return (in_array($engine, getEngine()));
+    }
+
+    /* Return a value indicating if transmission is valid
+     Valid transmission is choosing correct option
+     @param String $transmission
+     @return boolean
+    */
+    function validTransmission($transmission)
+    {
+        return (in_array($transmission, getTransmission()));
+    }
+
+    /* Return a value indicating if terrain is valid
+     Valid terrain is choosing correct option
+     @param String $terrain
+     @return boolean
+    */
+    function validTerrain($terrain)
+    {
+        return (in_array($terrain, getTerrain()));
+    }
+
+    /* Return a value indicating if material is valid
+     Valid material is choosing correct option
+     @param String $material
+     @return boolean
+    */
+    function validMaterial($material)
+    {
+        return (in_array($material, getMaterial()));
+    }
+
+    /* Return a value indicating if seats is valid
+     Valid seats is choosing correct option
+     @param String $seats
+     @return boolean
+    */
+    function validSeats($seats)
+    {
+        return (in_array($seats, getSeats()));
+    }
+
+    /** Return a value indicating if every value in
+    the $infotainment array is in the list of
+    valid options.
+    @param String[] $infotainment
+    @return boolean
+     */
+    function validInfotainment($info)
+    {
+        $infotainments = getInfotainment();
+
+        if(empty($info)) {
+            return false;
+        }
+
+        //We need to check each option in our array
+        foreach ($info as $selected) {
+            if(!in_array($selected, $infotainments)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
