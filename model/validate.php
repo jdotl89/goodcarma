@@ -56,6 +56,16 @@ class Validate
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
+    /* Return a value indicating if vehicle selection is valid
+       Valid vehicle is car or motorcycle
+       @param String $vehicle
+       @return boolean
+    */
+    function validVehicle($vehicle)
+    {
+        return $vehicle == 'car1' || $vehicle == 'motorcycle';
+    }
+
     /* Return a value indicating if vin is valid
       Valid vin is 17 characters long
       @param String $vin
@@ -66,6 +76,16 @@ class Validate
         $vin = str_replace(' ', '', $vin); //remove white space
                 //17 characters      //numeric
         return (strlen($vin) == 17 && is_numeric($vin));  // 1 if true
+    }
+
+    /* Return a value indicating if model is valid
+       Valid model is choosing correct option
+       @param String $model
+       @return boolean
+    */
+    function validMake($make)
+    {
+        return (in_array($make, getMakes()));
     }
 
     /* Return a value indicating if model is valid

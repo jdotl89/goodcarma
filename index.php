@@ -21,14 +21,14 @@ $f3->route('GET|POST /', function() {
     $GLOBALS['controller']->home();
 });
 
-// motorcycle route
-$f3->route('GET|POST /motor', function() {
-    $GLOBALS['controller']->motor();
-});
-
 //  personal route
 $f3->route('GET|POST /personal', function() {
     $GLOBALS['controller']->personal();
+});
+
+// motorcycle route
+$f3->route('GET|POST /motor', function() {
+    $GLOBALS['controller']->motor();
 });
 
 // vehicle information form route

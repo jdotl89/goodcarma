@@ -31,7 +31,7 @@ class Controller
     public function motor()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->_f3->reroute('personal');
+            $this->_f3->reroute('/');
         }
 
         $view = new Template();
@@ -72,6 +72,16 @@ class Controller
                 //Set an error variable in the F3 hive
                 $this->_f3->set('errors["email"]', "Correct email with @ and . required");
             }
+            if (isset($_POST['vehicle']) && !$this->_validator->validVehicle($_POST['vehicle'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["vehicle"]', "Wrong selection");
+            }
+            if (!isset($_POST['vehicle'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["vehicle"]', "Please select one");
+            }
             //Data is valid
             if (empty($this->_f3->get('errors'))) {
 
@@ -81,16 +91,25 @@ class Controller
                 $_SESSION['age'] = $_POST['age'];
                 $_SESSION['phone'] = $_POST['phone'];
                 $_SESSION['email'] = $_POST['email'];
+                $_SESSION['vehicle'] = $_POST['vehicle'];
 
-                //Redirect to Vehicle Info form page
+                //car or bike page?
+                if($_POST['vehicle'] == 'motorcycle') {
+                    //Redirect to Vehicle bike Info form page
+                    $this->_f3->reroute('motor');
+                }
+                //Redirect to Vehicle Car Info form page
                 $this->_f3->reroute('vehicleForm');
 
-//                $order = new FoodOrder();
-//                $order->setFood($_POST['food']);
-//                $order->setMeal($_POST['meal']);
+//                $userInfo = new UserInfo($_POST['firstName'],
+//                    $_POST['lastName'],
+//                    $_POST['age'],
+//                    $_POST['phone'],
+//                    $_POST['email'],
+//                    $_POST['vehicle']);
 //
 //                //Store the object in the session array
-//                $_SESSION['order'] = $order;
+//                $_SESSION['userInfo'] = $userInfo;
             }
         }
 
@@ -99,6 +118,7 @@ class Controller
         $this->_f3->set('phone', $_POST['phone']);
         $this->_f3->set('age', $_POST['age']);
         $this->_f3->set('email', $_POST['email']);
+        $this->_f3->set('vehicle', $_POST['vehicle']);
 
         $view = new Template();
         echo $view->render('views/personalForm.html');
@@ -121,7 +141,12 @@ class Controller
             if (!$this->_validator->validVIN($_POST['vin'])) {
 
                 //Set an error variable in the F3 hive
-                $this->_f3->set('errors["vin"]', "Please enter correct VIN");
+                $this->_f3->set('errors["vin"]', "Please enter correct VIN. 17 characters");
+            }
+            if (!$this->_validator->validMake($_POST['make'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["make"]', "Incorrect make selection");
             }
             if (!$this->_validator->validModel($_POST['model'])) {
 
@@ -143,6 +168,7 @@ class Controller
 
                 //Create object   ////saved in session for now ////
                 $_SESSION['vin'] = $_POST['vin'];
+                $_SESSION['make'] = $_POST['make'];
                 $_SESSION['model'] = $_POST['model'];
                 $_SESSION['year'] = $_POST['year'];
                 $_SESSION['color'] = $_POST['color'];
@@ -161,6 +187,7 @@ class Controller
         }
 
         $this->_f3->set('selectedVIN', $_POST['vin']);
+        $this->_f3->set('selectedMake', $_POST['make']);
         $this->_f3->set('selectedModel', $_POST['model']);
         $this->_f3->set('selectedYear', $_POST['year']);
         $this->_f3->set('selectedColor', $_POST['color']);

@@ -1,73 +1,81 @@
 <?php
 
-class FoodOrder
+class UserInfo
 {
     //Declare instance variables
-    private $_food;
-    private $_meal;
-    private $_condiments;
+    private $_fName;
+    private $_lName;
+    private $_age;
+    private $_phone;
+    private $_email;
+    private $_vehicle;
 
     /** Default constructor
-     * @param $food the food
-     * @param $meal the meal
-     * @param $condiments the condiments
+     * @param $fName the first name
+     * @param $lName the last name
+     * @param $age the age
+     * @param $phone the phone number
+     * @param $email the email address
+     * @param $vehicle the type of vehicle
      */
-    public function __construct($food = "scrambled eggs",
-                                $meal = "breakfast",
-                                $condiments = array("salt", "pepper"))
+    public function __construct($fName, $lName, $age, $email, $phone, $vehicle)
     {
-        $this->setFood($food);
-        $this->setMeal($meal);
-        $this->setCondiments($condiments);
-    }
-
-    /** Set the food
-     *  @param $food the food
-     */
-    public function setFood($food)
-    {
-        $this->_food = $food;
+        $this->_fName = $fName;
+        $this->_lName = $lName;
+        $this->_age = $age;
+        $this->_phone = $phone;
+        $this->_email = $email;
+        $this->_vehicle = $vehicle;
     }
 
     /**
-     * @return string the meal
+     * @return the first name
      */
-    public function getMeal()
+    public function getFName()
     {
-        return $this->_meal;
+        return $this->_fName;
     }
 
     /**
-     * @param string the $meal
+     * @return the last name
      */
-    public function setMeal($meal)
+    public function getLName()
     {
-        $this->_meal = $meal;
+        return $this->_lName;
     }
 
     /**
-     * @return array the condiments
+     * @return the age
      */
-    public function getCondiments()
+    public function getAge()
     {
-        return $this->_condiments;
+        return $this->_age;
     }
 
     /**
-     * @param array the $condiments
+     * @return the phone number
      */
-    public function setCondiments($condiments)
+    public function getPhone()
     {
-        $this->_condiments = $condiments;
+        return $this->_phone;
     }
 
-    /** Get the food
-     *  @return the food
+    /**
+     * @return the email address
      */
-    public function getFood()
+    public function getEmail()
     {
-        return $this->_food;
+        return $this->_email;
     }
+
+    /**
+     * @return the type of vehicle
+     */
+    public function getVehicle()
+    {
+        return $this->_vehicle;
+    }
+
 
     /** toString() returns a String representation
      *  of an order object
@@ -85,14 +93,3 @@ class FoodOrder
         return $out;
     }
 }
-
-/* For testing purposes only */
-/*
-$order = new FoodOrder("pizza", "lunch", array("parmesan", "red pepper flakes"));
-echo $order->toString() . "<br>";
-$order2 = new FoodOrder();
-echo $order2->toString() . "<br>";
-$order3 = new FoodOrder("tacos", "dinner");
-$order3->setCondiments(array("taco sauce", "sour cream"));
-echo $order3->toString() . "<br>";
-*/

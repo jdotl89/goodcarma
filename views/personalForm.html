@@ -71,6 +71,30 @@
                     </span>
                 </div>
             </div>
+
+            <div class="form-group">
+                <br><label><strong>Type of Vehicle</strong></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="car1" name="vehicle" value="car1"
+                    <check if="{{ @vehicle == 'car1' }}" >
+                        checked="checked"
+                    </check>>
+                    <label class="form-check-label" for="car1">Car</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="motorcycle" name="vehicle" value="motorcycle"
+                    <check if="{{ @vehicle == 'motorcycle' }}" >
+                        checked="checked"
+                    </check>>
+                    <label class="form-check-label" for="motorcycle">Motorcycle</label>
+                </div>
+                <span class="err">
+                        <check if="{{ isset(@errors['vehicle']) }}">
+                            <br>
+                            {{ @errors['vehicle'] }}
+                        </check>
+                    </span>
+            </div>
         </div>
         <br>
 

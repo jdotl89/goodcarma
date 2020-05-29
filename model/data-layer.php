@@ -2,26 +2,6 @@
 
     //data-layer.php
 
-    /* getMeals()
-     * Returns an array of meal options
-     * @return array
-     */
-    function getMeals()
-    {
-        $meals = array("breakfast", "lunch", "dinner");
-        return $meals;
-    }
-
-    /* getCondiments()
-    * Returns an array of condiments
-    * @return array
-    */
-    function getCondiments()
-    {
-        $conds = array("mayonnaise", "ketchup", "mustard", "sriracha");
-        return $conds;
-    }
-
     /* getYears()
     * Returns an array of years
     * @return array
@@ -48,21 +28,22 @@
     * Returns an array of car models
     * @return array
     */
-    function getModels()
+    function getMakes()
     {
-        $models = array('Audi', 'Bentley', 'BMW', 'Cadillac', 'Chevrolet', 'Ford',  'Jaguar',
+        $makes = array('Audi', 'Bentley', 'BMW', 'Cadillac', 'Chevrolet', 'Ford',  'Jaguar',
             'Jeep', 'Mercedes-Benz', 'Nissan', 'Porsche', 'Subaru', 'Toyota');
-        return $models;
+        return $makes;
     }
 
     /* getMakes()
     * Returns an array of car makes
     * @return array
     */
-    function getMakes()
+    function getModels()
     {
-        $makes = array('hi', 'bye', 'ok');
-        return $makes;
+        $models = array('Cabriolet', 'Convertible', 'Coupe', 'Hatchback', 'Limousine', 'Crossover',
+            'Micro', 'Sedan', 'Sports Car', 'SUV', 'Truck', 'Van', 'Wagon');
+        return $models;
     }
 
     /* getColors()
