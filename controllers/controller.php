@@ -30,9 +30,86 @@ class Controller
 
     public function motor()
     {
+        $this->_f3->set('allModels', getMModels());
+        $this->_f3->set('allMakes', getMMakes());
+        $this->_f3->set('allYears', getMYears());
+        $this->_f3->set('allColors', getMColors());
+        $this->_f3->set('engine', getMEngine());
+        $this->_f3->set('transmission', getMTransmission());
+        $this->_f3->set('seats', getMSeats());
+
+        //If the form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->_f3->reroute('/');
+
+            //Validate
+            if (!$this->_validator->validMMake($_POST['mmake'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["mmake"]', "Incorrect make selection");
+            }
+            if (!$this->_validator->validMModel($_POST['mmodel'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["mmodel"]', "Incorrect model selection");
+            }
+            if (!$this->_validator->validYear($_POST['myear'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["myear"]', "Incorrect year selection");
+            }
+            if (!$this->_validator->validColor($_POST['mcolor'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["mcolor"]', "Incorrect color selection");
+            }
+            if (!$this->_validator->validMEngine($_POST['mengine'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["mengine"]', "Please select an engine");
+            }
+            if (!$this->_validator->validTransmission($_POST['mtransmission'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["mtransmission"]', "Please select a transmission");
+            }
+            if (!$this->_validator->validMSeats($_POST['mseats'])) {
+
+                //Set an error variable in the F3 hive
+                $this->_f3->set('errors["mseats"]', "Please select how many seats");
+            }
+            //Data is valid
+            if (empty($this->_f3->get('errors'))) {
+
+                //Create object   ////saved in session for now ////
+                $_SESSION['make'] = $_POST['mmake'];
+                $_SESSION['model'] = $_POST['mmodel'];
+                $_SESSION['year'] = $_POST['myear'];
+                $_SESSION['color'] = $_POST['mcolor'];
+                $_SESSION['engine'] = $_POST['mengine'];
+                $_SESSION['transmission'] = $_POST['mtransmission'];
+                $_SESSION['seats'] = $_POST['mseats'];
+
+//                //Create an order object
+//                $order = new FoodOrder();
+//                $order->setFood($_POST['food']);
+//                $order->setMeal($_POST['meal']);
+//
+//                //Store the object in the session array
+//                $_SESSION['order'] = $order;
+
+                //Redirect to Order 2 page
+                $this->_f3->reroute('summary');
+            }
         }
+
+        // selected
+        $this->_f3->set('selectedMEngine', $_POST['mengine']);
+        $this->_f3->set('selectedMTransmission', $_POST['mtransmission']);
+        $this->_f3->set('selectedMSeats', $_POST['mseats']);
+        $this->_f3->set('selectedMMake', $_POST['mmake']);
+        $this->_f3->set('selectedMModel', $_POST['mmodel']);
+        $this->_f3->set('selectedMYear', $_POST['myear']);
+        $this->_f3->set('selectedMColor', $_POST['mcolor']);
 
         $view = new Template();
         echo $view->render('views/motorcycle.html');

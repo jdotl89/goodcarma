@@ -1,7 +1,7 @@
 <?php
 
     //data-layer.php
-
+// FOR THE CAR CLASS ------------------------------------------------------------------------------------------
     /* getYears()
     * Returns an array of years
     * @return array
@@ -56,7 +56,7 @@
         return $colors;
     }
 
-    // FOR THE INSIDE CLASS ------------------------------------------------------------------------------------------
+    // FOR THE INSIDE CAR CLASS --------------------------------------------------------------------------------------
     /* getEngine()
     * Returns an array of engine sizes
     * @return array
@@ -115,4 +115,82 @@
     {
         $seats = array(1,2, 3, 4, 5, 6, 7);
         return $seats;
+    }
+
+    // FOR THE INSIDE MOTORCYCLE CLASS ---------------------------------------------------------------------------------
+
+    /* getEngine()
+       * Returns an array of engine sizes
+       * @return array
+       */
+    function getMEngine()
+    {
+        $engine = array('1 cylinder', '2 cylinder', '3 cylinder', '4 cyclinder');
+        return $engine;
+    }
+
+    /* getTransmission()
+    * Returns an array of transmission modes
+    * @return array
+    */
+    function getMTransmission()
+    {
+        $trans = array('manual', 'automatic');
+        return $trans;
+    }
+
+    /* getSeats()
+       * Returns an array of seat numbers
+       * @return array
+       */
+    function getMSeats()
+    {
+        $seats = array(1, 2, 3);
+        return $seats;
+    }
+
+    /* getYears()
+    * Returns an array of years
+    * @return array
+    */
+    function getMYears()
+    {
+        $years = array(
+            "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012",
+            "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003",
+            "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994",
+            "1993", "1992", "1991", "1990", "1989 or older");
+        return $years;
+    }
+
+    /* getModels()
+    * Returns an array of motorcycle models
+    * @return array
+    */
+    function getMMakes()
+    {
+        $makes = array('BMW', 'Ducati', 'Honda', 'Harley Davidson', 'Kawasaki', 'Suzuki',  'Yamaha',
+            'Alligator', 'Boss Hoss', 'MTT', 'MotoCzysz', 'Zero Motorcycles');
+        return $makes;
+    }
+
+    /* getMakes()
+    * Returns an array of car makes
+    * @return array
+    */
+    function getMModels()
+    {
+        $models = array('Cruiser', 'Choppers', 'Naked', 'Motocross', 'Dirt Bikes', 'Moped',
+            'Scooter', 'Quads');
+        return $models;
+    }
+
+    /* getColors()
+    * Returns an array of colors
+    * @return array
+    */
+    function getMColors()
+    {
+        $colors = array('White', 'Silver', 'Black', 'Red', 'Grey', 'Blue');
+        return $colors;
     }

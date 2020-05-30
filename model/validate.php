@@ -191,4 +191,40 @@ class Validate
         }
         return true;
     }
+
+    // Motorcycle validation------------------------------------------------------------------------------------
+    function validMMake($make)
+    {
+        return (in_array($make, getMMakes()));
+    }
+
+    /* Return a value indicating if model is valid
+      Valid model is choosing correct option
+      @param String $model
+      @return boolean
+   */
+    function validMModel($model)
+    {
+        return (in_array($model, getMModels()));
+    }
+
+    /* Return a value indicating if engine is valid
+     Valid engine is choosing correct option
+     @param String $engine
+     @return boolean
+    */
+    function validMEngine($engine)
+    {
+        return (in_array($engine, getMEngine()));
+    }
+
+    /* Return a value indicating if seats is valid
+     Valid seats is choosing correct option
+     @param String $seats
+     @return boolean
+    */
+    function validMSeats($seats)
+    {
+        return (in_array($seats, getMSeats()));
+    }
 }

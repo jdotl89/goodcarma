@@ -17,119 +17,141 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-6"> <!-- start left column-->
-                    <h2>Engine</h2>
+                    <h2>Design</h2>
                     <hr>
                     <div>
-                        <label for="engine"><strong>Engine Size</strong></label>
-                        <select class="form-control" id="engine" name="engine">
+                        <label for="mmake"><strong>Make</strong></label><br>
+                        <select class="form-control" id="mmake" name="mmake">
                             <option value="none">Please select</option><br>
-                            <repeat group="{{ @engine}}" value="{{ @engin}}">
-                                <option value="{{ @engin }}"
-                                <check if="{{ @engin == @selectedEngine }}" >
+                            <repeat group="{{ @allMakes }}" value="{{ @mmake}}">
+                                <option value="{{ @mmake }}"
+                                <check if="{{ @mmake == @selectedMMake }}" >
                                     selected="selected"
                                 </check>
-                                >{{ ucfirst(@engin) }}</option>><br>
+                                >{{ ucfirst(@mmake) }}</option>><br>
                             </repeat>
                         </select>
                         <span class="err">
-                                 <check if="{{ isset(@errors['engine']) }}">
-                                     {{ @errors['engine'] }}
+                        <check if="{{ isset(@errors['mmake']) }}">
+                            {{ @errors['mmake'] }}
+                        </check>
+                    </span>
+                    </div>
+
+                    <div>
+                        <label for="myear"><strong>Year</strong></label><br>
+                        <select class="form-control" id="myear" name="myear">
+                            <option value="none">Please select</option><br>
+                            <repeat group="{{ @allYears }}" value="{{ @myear}}">
+                                <option value="{{ @myear }}"
+                                <check if="{{ @myear == @selectedMYear }}" >
+                                    selected="selected"
+                                </check>
+                                >{{ ucfirst(@myear) }}</option>><br>
+                            </repeat>
+                        </select>
+                        <span class="err">
+                        <check if="{{ isset(@errors['myear']) }}">
+                            {{ @errors['myear'] }}
+                        </check>
+                    </span>
+                    </div>
+
+                    <div>
+                        <label for="mengine"><strong>Engine Size</strong></label>
+                        <select class="form-control" id="mengine" name="mengine">
+                            <option value="none">Please select</option><br>
+                            <repeat group="{{ @engine}}" value="{{ @mengin}}">
+                                <option value="{{ @mengin }}"
+                                <check if="{{ @mengin == @selectedMEngine }}" >
+                                    selected="selected"
+                                </check>
+                                >{{ ucfirst(@mengin) }}</option>><br>
+                            </repeat>
+                        </select>
+                        <span class="err">
+                                 <check if="{{ isset(@errors['mengine']) }}">
+                                     {{ @errors['mengine'] }}
                                  </check>
                             </span>
                     </div>
 
                     <div>
-                        <label class=" mt-2" for="transmission"><strong>Transmission</strong></label>
-                        <select class="form-control" id="transmission" name="transmission">
+                        <label class=" mt-2" for="mtransmission"><strong>Transmission</strong></label>
+                        <select class="form-control" id="mtransmission" name="mtransmission">
                             <option value="none">Please select</option><br>
-                            <repeat group="{{ @transmission}}" value="{{ @trans}}">
-                                <option value="{{ @trans }}"
-                                <check if="{{ @trans == @selectedTransmission }}" >
+                            <repeat group="{{ @transmission}}" value="{{ @mtrans}}">
+                                <option value="{{ @mtrans }}"
+                                <check if="{{ @mtrans == @selectedMTransmission }}" >
                                     selected="selected"
                                 </check>
-                                >{{ ucfirst(@trans) }}</option>><br>
+                                >{{ ucfirst(@mtrans) }}</option>><br>
                             </repeat>
                         </select>
                         <span class="err">
-                                 <check if="{{ isset(@errors['transmission']) }}">
-                                     {{ @errors['transmission'] }}
-                                 </check>
-                            </span>
-                    </div>
-
-                    <div>
-                        <label class=" mt-2" for="terrain"><strong>Drive Terrain</strong></label>
-                        <select class="form-control" id="terrain" name="terrain">
-                            <option value="none">Please select</option><br>
-                            <repeat group="{{ @terrain}}" value="{{ @terr}}">
-                                <option value="{{ @terr }}"
-                                <check if="{{ @terr == @selectedTerrain }}" >
-                                    selected="selected"
-                                </check>
-                                >{{ ucfirst(@terr) }}</option>><br>
-                            </repeat>
-                        </select>
-                        <span class="err">
-                                 <check if="{{ isset(@errors['terrain']) }}">
-                                     {{ @errors['terrain'] }}
+                                 <check if="{{ isset(@errors['mtransmission']) }}">
+                                     {{ @errors['mtransmission'] }}
                                  </check>
                             </span>
                     </div>
                 </div> <!--end of first column (left)-->
 
                 <div class="col-md-6"> <!-- start of right column-->
-                    <h2>Interior</h2>
+                    <h2>Features</h2>
                     <hr>
                     <div>
-                        <label for="material"><strong>Material</strong></label>
-                        <select class="form-control" id="material" name="material">
+                        <label for="mmodel"><strong>Model</strong></label><br>
+                        <select class="form-control" id="model" name="mmodel">
                             <option value="none">Please select</option><br>
-                            <repeat group="{{ @material }}" value="{{ @materia}}">
-                                <option value="{{ @materia }}"
-                                <check if="{{ @materia == @selectedMaterial }}" >
+                            <repeat group="{{ @allModels}}" value="{{ @mmodel}}">
+                                <option value="{{ @mmodel }}"
+                                <check if="{{ @mmodel == @selectedMModel }}" >
                                     selected="selected"
                                 </check>
-                                >{{ ucfirst(@materia) }}</option>><br>
+                                >{{ ucfirst(@mmodel) }}</option>><br>
                             </repeat>
                         </select>
                         <span class="err">
-                                 <check if="{{ isset(@errors['material']) }}">
-                                     {{ @errors['material'] }}
-                                 </check>
-                            </span>
+                        <check if="{{ isset(@errors['mmodel']) }}">
+                            {{ @errors['mmodel'] }}
+                        </check>
+                    </span>
                     </div>
 
                     <div>
-                        <label class=" mt-2"><strong>Infotainment</strong></label><br>
-                        <repeat group="{{ @infotainment }}" value="{{ @infotainmen }}">
-                            <label class="mr-2"><input type="checkbox" name="infotainment[]" value="{{ @infotainmen }}"
-                                <check if="{{ !empty(@selectedInfotainment) && in_array(@infotainmen, @selectedInfotainment) }}">checked="checked"</check>>
-                                {{ ucfirst(@infotainmen) }}</label>
-                        </repeat>
-                    </div>
-                    <div>
-                        <span class="err">
-                            <check if="{{ isset(@errors['infotainment']) }}">
-                            {{ @errors['infotainment'] }}
-                            </check>
-                        </span>
-                    </div>
-
-                    <div>
-                        <label for="seats"><strong>Number of Seats</strong></label>
-                        <select class="form-control" id="seats" name="seats">
-                            <option value="none">Please select</option><br>
-                            <repeat group="{{ @seats }}" value="{{ @seat}}">
-                                <option value="{{ @seat }}"
-                                <check if="{{ @seat == @selectedSeats }}" >
+                        <label for="mcolor"><strong>Color</strong></label><br>
+                        <select class="form-control" id="mcolor" name="mcolor">
+                            <option value="none">---</option><br>
+                            <repeat group="{{ @allColors }}" value="{{ @mcolor }}">
+                                <option value="{{ @mcolor }}"
+                                <check if="{{ @mcolor == @selectedMColor }}" >
                                     selected="selected"
                                 </check>
-                                >{{ ucfirst(@seat) }}</option>><br>
+                                >{{ ucfirst(@mcolor) }}</option>><br>
                             </repeat>
                         </select>
                         <span class="err">
-                                 <check if="{{ isset(@errors['seats']) }}">
-                                     {{ @errors['seats'] }}
+                        <check if="{{ isset(@errors['mcolor']) }}">
+                            {{ @errors['mcolor'] }}
+                        </check>
+                    </span>
+                    </div>
+
+                    <div>
+                        <label for="mseats"><strong>Number of Seats</strong></label>
+                        <select class="form-control" id="mseats" name="mseats">
+                            <option value="none">Please select</option><br>
+                            <repeat group="{{ @seats }}" value="{{ @mseat}}">
+                                <option value="{{ @mseat }}"
+                                <check if="{{ @mseat == @selectedMSeats }}" >
+                                    selected="selected"
+                                </check>
+                                >{{ ucfirst(@mseat) }}</option>><br>
+                            </repeat>
+                        </select>
+                        <span class="err">
+                                 <check if="{{ isset(@errors['mseats']) }}">
+                                     {{ @errors['mseats'] }}
                                  </check>
                             </span>
                     </div>
