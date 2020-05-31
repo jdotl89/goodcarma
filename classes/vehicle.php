@@ -130,29 +130,11 @@ class Vehicle
     }
 
     /** toString() returns a String representation
-     *  of an order object
+     *  of a vehicle object
      *  @return string
      */
     public function toString()
     {
-        $out = $this->_food . ", ";
-        $out .= $this->_meal . ", ";
-
-        if (!empty($this->_condiments)) {
-            $out .= implode(" & ", $this->_condiments);
-        }
-
-        return $out;
+        return $this->_make . " " . $this->_model . " " . $this->_year;
     }
 }
-
-/* For testing purposes only */
-/*
-$order = new FoodOrder("pizza", "lunch", array("parmesan", "red pepper flakes"));
-echo $order->toString() . "<br>";
-$order2 = new FoodOrder();
-echo $order2->toString() . "<br>";
-$order3 = new FoodOrder("tacos", "dinner");
-$order3->setCondiments(array("taco sauce", "sour cream"));
-echo $order3->toString() . "<br>";
-*/
