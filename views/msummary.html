@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include href="includes/header.htm"></include>
+    <title>Summary</title>
+</head>
+<body>
+<form action="personal">
+    <div class="container border border-dark">
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ @BASE }}">Home</a>
+        </nav>
+        <br>
+        <h2>Thank you for completing our form</h2>
+        <h4>Here are your motorcycle features</h4>
+        <div class="row">
+            <div class="col-6">
+                <div class="card" style="width: 34rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</li>
+                        <li class="list-group-item">Age: {{ @SESSION.age }}</li>
+                        <li class="list-group-item">Phone: {{ @SESSION.phone }}</li>
+                        <li class="list-group-item">Email: {{ @SESSION.email }}</li>
+                        <li class="list-group-item">Model: {{ @SESSION.model }}</li>
+                        <li class="list-group-item">Make: {{ @SESSION.make }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card" style="width: 34rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Year: {{ @SESSION.year }}</li>
+                        <li class="list-group-item">Color: {{ @SESSION.color }}</li>
+                        <li class="list-group-item">Engine: {{ @SESSION.engine }}</li>
+                        <li class="list-group-item">Transmission: {{ @SESSION.transmission }}</li>
+                        <li class="list-group-item">Seats: {{ @SESSION.seats }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class= "form-group" id="btn">
+            <button type="submit" class="btn btn-primary" id="button">Create new vehicle</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

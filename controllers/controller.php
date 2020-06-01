@@ -98,7 +98,7 @@ class Controller
 //                $_SESSION['order'] = $order;
 
                 //Redirect to Order 2 page
-                $this->_f3->reroute('summary');
+                $this->_f3->reroute('msummary');
             }
         }
 
@@ -356,6 +356,18 @@ class Controller
 
         $view = new Template();
         echo $view->render('views/summary.html');
+
+        session_destroy();
+    }
+
+    /**
+     *
+     */
+    public function msummary()
+    {
+
+        $view = new Template();
+        echo $view->render('views/msummary.html');
 
         session_destroy();
     }
