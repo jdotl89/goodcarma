@@ -75,7 +75,7 @@ class Validate
     {
         $vin = str_replace(' ', '', $vin); //remove white space
                 //17 characters      //numeric
-        return (strlen($vin) == 17 && is_numeric($vin));  // 1 if true
+        return (strlen($vin) == 17);  // 1 if true
     }
 
     /* Return a value indicating if model is valid
