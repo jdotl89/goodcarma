@@ -173,9 +173,11 @@ class Controller
                 //car or bike page?
                 if($_POST['vehicle'] == 'motorcycle') {
                     //Redirect to Vehicle bike Info form page
+                    $vehicle = new Motorcycle();
                     $this->_f3->reroute('motor');
                 }
                 //Redirect to Vehicle Car Info form page
+                $vehicle = new Car();
                 $this->_f3->reroute('vehicleForm');
 
 //                $userInfo = new UserInfo($_POST['firstName'],
@@ -244,11 +246,11 @@ class Controller
             if (empty($this->_f3->get('errors'))) {
 
                 //Create object   ////saved in session for now ////
-                $_SESSION['vin'] = $_POST['vin'];
-                $_SESSION['make'] = $_POST['make'];
-                $_SESSION['model'] = $_POST['model'];
-                $_SESSION['year'] = $_POST['year'];
-                $_SESSION['color'] = $_POST['color'];
+                $_SESSION['vehicle'] = setVin($_POST['vin']);
+                $_SESSION['vehicle'] = setMake($_POST['make']);
+                $_SESSION['vehicle'] = setModel($_POST['model']);
+                $_SESSION['vehicle'] = setYear($_POST['year']);
+                $_SESSION['vehicle'] = setColor($_POST['color']);
 
 //                //Create an order object
 //                $order = new FoodOrder();

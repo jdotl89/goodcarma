@@ -13,36 +13,45 @@ class Car extends Vehicle
     private $_material;
     private $_infotainment;
     private $_numSeats;
+    private $_vin;
 
     /** Default constructor
-     * @param $year the year
-     * @param $make the make
-     * @param $model the model
-     * @param $engine the engine
-     * @param $transmission the transmission
-     * @param $color the color
-     * @param $terrain the drive terrain
-     * @param $material the material
-     * @param $infotainment the infotainment
-     * @param $numSeats the number of seats
+    @param $vin
+     * @param $year
+     * @param $make
+     * @param $model
+     * @param $engine
+     * @param $transmission
+     * @param $color
+     * @param $terrain
+     * @param $material
+     * @param $infotainment
+     * @param $numSeats
      */
-    public function __construct($year, $make, $model, $engine, $transmission,
-                                $color, $terrain, $material, $infotainment, $numSeats)
+    public function __construct($vin = "a0000000000000000", $year = "2000", $make = "bmw", $model = "sedan", $engine = "4 cycliner", $transmission = "automatic", $color = "red")
     {
-        $this->_year = $year;
-        $this->_make = $make;
-        $this->_model = $model;
-        $this->_engine = $engine;
-        $this->_transmission = $transmission;
-        $this->_color = $color;
-        $this->_terrain = $terrain;
-        $this->_material = $material;
-        $this->_infotainment = $infotainment;
-        $this->_numSeats = $numSeats;
+        parent::__construct($year, $make, $model, $engine, $transmission, $color);
+        $this->setVin($vin);
     }
 
     /**
-     * @return the year
+     * @return mixed
+     */
+    public function getVin()
+    {
+        return $this->_vin;
+    }
+
+    /**
+     * @param mixed $vin
+     */
+    public function setVin($vin)
+    {
+        $this->_vin = $vin;
+    }
+
+    /**
+     * @return year
      */
     public function getYear()
     {
@@ -50,7 +59,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return the make
+     * @return make
      */
     public function getMake()
     {
@@ -58,7 +67,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return the model
+     * @return model
      */
     public function getModel()
     {
@@ -66,7 +75,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return the engine
+     * @return engine
      */
     public function getEngine()
     {
@@ -74,7 +83,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return the transmission
+     * @return transmission
      */
     public function getTransmission()
     {
@@ -82,7 +91,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return the color
+     * @return color
      */
     public function getColor()
     {
@@ -90,7 +99,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return the terrain
+     * @return terrain
      */
     public function getTerrain()
     {
@@ -98,7 +107,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return the material
+     * @return material
      */
     public function getMaterial()
     {
@@ -106,7 +115,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return the infotainment
+     * @return infotainment
      */
     public function getInfotainment()
     {
@@ -114,7 +123,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return the number of seats
+     * @return number of seats
      */
     public function getNumSeats()
     {
