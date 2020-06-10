@@ -80,14 +80,17 @@ class Controller
             //Data is valid
             if (empty($this->_f3->get('errors'))) {
 
-                //Create object   ////saved in session for now ////
-                $_SESSION['make'] = $_POST['mmake'];
-                $_SESSION['model'] = $_POST['mmodel'];
-                $_SESSION['year'] = $_POST['myear'];
-                $_SESSION['color'] = $_POST['mcolor'];
-                $_SESSION['engine'] = $_POST['mengine'];
-                $_SESSION['transmission'] = $_POST['mtransmission'];
-                $_SESSION['seats'] = $_POST['mseats'];
+                //Create object
+                $motorcycle = new Motorcycle();
+
+                ////saved in session for now ////
+                $motorcycle->setMake($_POST['mmake']);
+                $motorcycle->setModel($_POST['mmodel']);
+                $motorcycle->setYear($_POST['myear']);
+                $motorcycle->setColor($_POST['mcolor']);
+                $motorcycle->setEngine($_POST['mengine']);
+                $motorcycle->setTransmission($_POST['mtransmission']);
+                $motorcycle->setNumSeats($_POST['mseats']);
 
 //                //Create an order object
 //                $order = new FoodOrder();
@@ -95,7 +98,7 @@ class Controller
 //                $order->setMeal($_POST['meal']);
 //
 //                //Store the object in the session array
-//                $_SESSION['order'] = $order;
+               $_SESSION['motorcycle'] = $motorcycle;
 
                 //Redirect to Order 2 page
                 $this->_f3->reroute('msummary');

@@ -17,10 +17,9 @@ class Car extends Vehicle
      * @param string $transmission
      * @param string $color
      */
-    public function __construct( $year = "2000", $make = "bmw", $model = "sedan", $engine = "4 cycliner", $transmission = "automatic", $color = "red")
+    public function __construct($year = "2000", $make = "bmw", $model = "sedan", $engine = "4 cycliner", $transmission = "automatic", $color = "red", $numSeats = "2")
     {
-        parent::__construct($year, $make, $model, $engine, $transmission, $color);
-
+        parent::__construct($year, $make, $model, $engine, $transmission, $color, $numSeats);
     }
 
     /**
@@ -85,22 +84,6 @@ class Car extends Vehicle
     public function getInfotainment()
     {
         return $this->_infotainment;
-    }
-
-    /**
-     * @param mixed $numSeats
-     */
-    public function setNumSeats($numSeats)
-    {
-        $this->_numSeats = $numSeats;
-    }
-
-    /**
-     * @return number of seats
-     */
-    public function getNumSeats()
-    {
-        return $this->_numSeats;
     }
 
     /** toString() returns a String representation

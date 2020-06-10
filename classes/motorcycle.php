@@ -13,9 +13,8 @@ class Motorcycle extends Vehicle
      * @param $color the color
      * @param $numSeats the number of seats
      */
-    public function __construct($year = "2000", $make = "bmw", $model = "sedan", $engine = "4 cycliner", $transmission = "automatic", $color = "red")
+    public function __construct($year = "2000", $make = "bmw", $model = "sedan", $engine = "4 cycliner", $transmission = "automatic", $color = "red", $numSeats = "2")
     {
-        parent::__construct($year, $make, $model, $engine, $transmission, $color);
+        parent::__construct($year, $make, $model, $engine, $transmission, $color, $numSeats);
     }
-
 }

@@ -9,21 +9,24 @@ class Vehicle
     private $_engine;
     private $_transmission;
     private $_color;
+    private $_numSeats;
 
     /** Default constructor
-     * @param $year the year
-     * @param $make the make
-     * @param $model the model
-     * @param $engine the engine
-     * @param $transmission the transmission
-     * @param $color the color
+     * @param string $year the year
+     * @param string $make the make
+     * @param string $model the model
+     * @param string $engine the engine
+     * @param string $transmission the transmission
+     * @param string $color the color
+     * @param string $numSeats
      */
     public function __construct($year = "2000",
                                 $make = "bmw",
                                 $model = "sedan",
                                 $engine = "4 cycliner",
                                 $transmission = "automatic",
-                                $color = "red")
+                                $color = "red",
+                                $numSeats = "2")
     {
         $this->setYear($year);
         $this->setMake($make);
@@ -31,6 +34,7 @@ class Vehicle
         $this->setEngine($engine);
         $this->setTransmission($transmission);
         $this->setColor($color);
+        $this->setNumSeats($numSeats);
     }
 
     /** Set the year
@@ -128,5 +132,22 @@ class Vehicle
     {
         return $this->_color;
     }
+
+    /**
+     * @param mixed $numSeats
+     */
+    public function setNumSeats($numSeats)
+    {
+        $this->_numSeats = $numSeats;
+    }
+
+    /**
+     * @return number of seats
+     */
+    public function getNumSeats()
+    {
+        return $this->_numSeats;
+    }
+
 
 }
