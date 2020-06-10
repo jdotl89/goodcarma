@@ -129,12 +129,4 @@ class Vehicle
         return $this->_color;
     }
 
-    /** toString() returns a String representation
-     *  of a vehicle object
-     *  @return string
-     */
-    public function toString()
-    {
-        return $this->_make . " " . $this->_model . " " . $this->_year;
-    }
 }

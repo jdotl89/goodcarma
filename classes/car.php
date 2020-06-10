@@ -3,35 +3,24 @@
 class Car extends Vehicle
 {
     //Declare instance variables
-    private $_year;
-    private $_make;
-    private $_model;
-    private $_engine;
-    private $_transmission;
-    private $_color;
+    private $_vin;
     private $_terrain;
     private $_material;
     private $_infotainment;
     private $_numSeats;
-    private $_vin;
 
     /** Default constructor
-    @param $vin
-     * @param $year
-     * @param $make
-     * @param $model
-     * @param $engine
-     * @param $transmission
-     * @param $color
-     * @param $terrain
-     * @param $material
-     * @param $infotainment
-     * @param $numSeats
+     * @param string $year
+     * @param string $make
+     * @param string $model
+     * @param string $engine
+     * @param string $transmission
+     * @param string $color
      */
-    public function __construct($vin = "a0000000000000000", $year = "2000", $make = "bmw", $model = "sedan", $engine = "4 cycliner", $transmission = "automatic", $color = "red")
+    public function __construct( $year = "2000", $make = "bmw", $model = "sedan", $engine = "4 cycliner", $transmission = "automatic", $color = "red")
     {
         parent::__construct($year, $make, $model, $engine, $transmission, $color);
-        $this->setVin($vin);
+
     }
 
     /**
@@ -51,51 +40,11 @@ class Car extends Vehicle
     }
 
     /**
-     * @return year
+     * @param mixed $terrain
      */
-    public function getYear()
+    public function setTerrain($terrain)
     {
-        return $this->_year;
-    }
-
-    /**
-     * @return make
-     */
-    public function getMake()
-    {
-        return $this->_make;
-    }
-
-    /**
-     * @return model
-     */
-    public function getModel()
-    {
-        return $this->_model;
-    }
-
-    /**
-     * @return engine
-     */
-    public function getEngine()
-    {
-        return $this->_engine;
-    }
-
-    /**
-     * @return transmission
-     */
-    public function getTransmission()
-    {
-        return $this->_transmission;
-    }
-
-    /**
-     * @return color
-     */
-    public function getColor()
-    {
-        return $this->_color;
+        $this->_terrain = $terrain;
     }
 
     /**
@@ -107,6 +56,14 @@ class Car extends Vehicle
     }
 
     /**
+     * @param mixed $material
+     */
+    public function setMaterial($material)
+    {
+        $this->_material = $material;
+    }
+
+    /**
      * @return material
      */
     public function getMaterial()
@@ -115,11 +72,27 @@ class Car extends Vehicle
     }
 
     /**
+     * @param mixed $infotainment
+     */
+    public function setInfotainment($infotainment)
+    {
+        $this->_infotainment = $infotainment;
+    }
+
+    /**
      * @return infotainment
      */
     public function getInfotainment()
     {
         return $this->_infotainment;
+    }
+
+    /**
+     * @param mixed $numSeats
+     */
+    public function setNumSeats($numSeats)
+    {
+        $this->_numSeats = $numSeats;
     }
 
     /**
@@ -134,8 +107,5 @@ class Car extends Vehicle
      *  of an car object
      *  @return string
      */
-    public function toString()
-    {
-        return $this->_make . " " . $this->_model . " " . $this->_year;
-    }
+
 }

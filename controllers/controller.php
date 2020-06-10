@@ -173,11 +173,9 @@ class Controller
                 //car or bike page?
                 if($_POST['vehicle'] == 'motorcycle') {
                     //Redirect to Vehicle bike Info form page
-                    $vehicle = new Motorcycle();
                     $this->_f3->reroute('motor');
                 }
                 //Redirect to Vehicle Car Info form page
-                $vehicle = new Car();
                 $this->_f3->reroute('vehicleForm');
 
 //                $userInfo = new UserInfo($_POST['firstName'],
@@ -208,6 +206,9 @@ class Controller
      */
     public function vehicleForm()
     {
+        //var_dump($_SESSION);
+        var_dump($_POST);
+
         $this->_f3->set('allModels', getModels());
         $this->_f3->set('allMakes', getMakes());
         $this->_f3->set('allYears', getYears());
@@ -244,13 +245,14 @@ class Controller
             }
             //Data is valid
             if (empty($this->_f3->get('errors'))) {
+                $car = new Car();
 
                 //Create object   ////saved in session for now ////
-                $_SESSION['vehicle'] = setVin($_POST['vin']);
-                $_SESSION['vehicle'] = setMake($_POST['make']);
-                $_SESSION['vehicle'] = setModel($_POST['model']);
-                $_SESSION['vehicle'] = setYear($_POST['year']);
-                $_SESSION['vehicle'] = setColor($_POST['color']);
+                $car->setVin($_POST['vin']);
+                $car->setMake($_POST['make']);
+                $car->setModel($_POST['model']);
+                $car->setYear($_POST['year']);
+                $car->setColor($_POST['color']);
 
 //                //Create an order object
 //                $order = new FoodOrder();
@@ -261,6 +263,8 @@ class Controller
 //                $_SESSION['order'] = $order;
 
                 //Redirect to Order 2 page
+                $_SESSION['automobile'] = $car;
+
                 $this->_f3->reroute('engineInterior');
             }
         }
@@ -280,6 +284,8 @@ class Controller
      */
     public function engineInterior()
     {
+        var_dump($_SESSION);
+        $car = $_SESSION['automobile'];
         $this->_f3->set('engine', getEngine());
         $this->_f3->set('transmission', getTransmission());
         $this->_f3->set('terrain', getTerrain());
@@ -328,12 +334,12 @@ class Controller
             if (empty($this->_f3->get('errors'))) {
 
                 //Redirect to summary page
-                $_SESSION['engine'] = $_POST['engine'];
-                $_SESSION['transmission'] = $_POST['transmission'];
-                $_SESSION['terrain'] = $_POST['terrain'];
-                $_SESSION['material'] = $_POST['material'];
-                $_SESSION['seats'] = $_POST['seats'];
-                $_SESSION['infotainment'] = $_POST['infotainment'];
+                $_SESSION['automobile']->setEngine($_POST['engine']);
+                $_SESSION['automobile']->setTransmission($_POST['transmission']);
+                $_SESSION['automobile']->setTerrain($_POST['terrain']);
+                $_SESSION['automobile']->setMaterial($_POST['material']);
+                $_SESSION['automobile']->setNumSeats($_POST['seats']);
+                $_SESSION['automobile']->setInfotainment($_POST['infotainment']);
                 $this->_f3->reroute('summary');
             }
         }
@@ -355,7 +361,7 @@ class Controller
      */
     public function summary()
     {
-
+        var_dump($_SESSION);
         $view = new Template();
         echo $view->render('views/summary.html');
 
