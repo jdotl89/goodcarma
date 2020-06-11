@@ -31,22 +31,33 @@ class Database
         }
     }
 
-    function writeOrder($order)
+    function write($info)
     {
-        //var_dump($order);
-
-        //Convert condiments array to a string
-        $conds = $order->getCondiments();
-        if (empty($conds)) {
-            $conds = "";
-        } else {
-            $conds = implode(", ", $conds);
-        }
+        $fName = $info->getFname();
+        $lName = $info->getLname();
+        $age = $info->getAge();
+        $phone = $info->getPhone();
+        $email = $info->getEmail();
 
         //Write to database
+
+//        INSERT INTO vehicle (VIN, make, model, year, color)
+//                VALUES ('12345123451234512', 'BMW', 'fasdfa', 2020, 'blue')
+        
+//        CREATE TABLE vehicle (
+//        vehicleNum int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+//        VIN VARCHAR(17) NOT NULL,
+//        model VARCHAR(50) NOT NULL,
+//        make VARCHAR(50) NOT NULL,
+//        year int not null,
+//        color VARCHAR(50) NOT NULL,
+//        id int not null,
+//        FOREIGN KEY (id) REFERENCES userInfo(id)
+//            );
+
         //1. Define the query
-        $sql = "INSERT INTO food_order (food, meal, condiments)
-                VALUES (:food, :meal, :condiments)";
+        $sql = "INSERT INTO userInfo (fName, lName, email, phone, age)
+                VALUES (:fName, :lName, :email, :phone, :age)";
 
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
@@ -62,7 +73,7 @@ class Database
         //5. Process the results - SKIP
     }
 
-    function getOrders()
+    function view()
     {
         //Read fro database
         //1. Define the query
