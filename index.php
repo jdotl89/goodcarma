@@ -47,10 +47,5 @@ $f3->route('GET|POST /summary', function() {
     $GLOBALS['controller']->summary();
 });
 
-// summary route
-$f3->route('GET|POST /msummary', function() {
-    $GLOBALS['controller']->msummary();
-});
-
 //Run F3
 $f3->run();

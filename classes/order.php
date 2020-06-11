@@ -81,15 +81,5 @@ class UserInfo
      *  of an order object
      *  @return string
      */
-    public function toString()
-    {
-        $out = $this->_food . ", ";
-        $out .= $this->_meal . ", ";
 
-        if (!empty($this->_condiments)) {
-            $out .= implode(" & ", $this->_condiments);
-        }
-
-        return $out;
-    }
 }

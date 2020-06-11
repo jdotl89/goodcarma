@@ -12,7 +12,7 @@
             </nav>
             <br>
             <h2>Thank you for completing our form</h2>
-            <h4>Here are your car features</h4>
+            <h4>Here are your vehicle features</h4>
             <div class="row">
                 <div class="col-6">
                     <div class="card" style="width: 34rem;">
@@ -21,23 +21,38 @@
                             <li class="list-group-item">Age: {{ @SESSION.userInfo->getAge() }}</li>
                             <li class="list-group-item">Phone: {{ @SESSION.userInfo->getPhone() }}</li>
                             <li class="list-group-item">Email: {{ @SESSION.userInfo->getEmail() }}</li>
-                            <li class="list-group-item">VIN: {{ @SESSION.automobile->getVIN() }}</li>
-                            <li class="list-group-item">Model: {{ @SESSION.automobile->getModel() }}}</li>
-                            <li class="list-group-item">Make: {{ @SESSION.automobile->getMake() }}</li>
-                            <li class="list-group-item">Year: {{ @SESSION.automobile->getYear() }}</li>
+                            <check if="{{ @SESSION.userInfo->getVehicle() == 'motorcycle'}}">
+                                <li class="list-group-item">Model: {{ @SESSION.motorcycle->getModel() }}</li>
+                                <li class="list-group-item">Make: {{ @SESSION.motorcycle->getMake() }}</li>
+                            </check>
+                            <check if="{{ @SESSION.userInfo->getVehicle() == 'car1'}}">
+                                <li class="list-group-item">VIN: {{ @SESSION.automobile->getVIN() }}</li>
+                                <li class="list-group-item">Model: {{ @SESSION.automobile->getModel() }}}</li>
+                                <li class="list-group-item">Make: {{ @SESSION.automobile->getMake() }}</li>
+                                <li class="list-group-item">Year: {{ @SESSION.automobile->getYear() }}</li>
+                            </check>
                         </ul>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="card" style="width: 34rem;">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Color: {{ @SESSION.automobile->getColor() }}</li>
-                            <li class="list-group-item">Engine: {{ @SESSION.automobile->getEngine() }}</li>
-                            <li class="list-group-item">Transmission: {{ @SESSION.automobile->getTransmission() }}</li>
-                            <li class="list-group-item">Drive Terrain: {{ @SESSION.automobile->getTerrain() }}</li>
-                            <li class="list-group-item">Material: {{ @SESSION.automobile->getMaterial() }}</li>
-                            <li class="list-group-item">Seats: {{ @SESSION.automobile->getNumSeats() }}</li>
-                            <li class="list-group-item">Infotainment: {{ implode(@SESSION.automobile->getInfotainment(), ", ") }}</li>
+                            <check if="{{ @SESSION.userInfo->getVehicle() == 'car1'}}">
+                                <li class="list-group-item">Color: {{ @SESSION.automobile->getColor() }}</li>
+                                <li class="list-group-item">Engine: {{ @SESSION.automobile->getEngine() }}</li>
+                                <li class="list-group-item">Transmission: {{ @SESSION.automobile->getTransmission() }}</li>
+                                <li class="list-group-item">Drive Terrain: {{ @SESSION.automobile->getTerrain() }}</li>
+                                <li class="list-group-item">Material: {{ @SESSION.automobile->getMaterial() }}</li>
+                                <li class="list-group-item">Seats: {{ @SESSION.automobile->getNumSeats() }}</li>
+                                <li class="list-group-item">Infotainment: {{ implode(@SESSION.automobile->getInfotainment(), ", ") }}</li>
+                            </check>
+                            <check if="{{ @SESSION.userInfo->getVehicle() == 'motorcycle'}}">
+                                <li class="list-group-item">Year: {{ @SESSION.motorcycle->getYear() }}</li>
+                                <li class="list-group-item">Color:{{ @SESSION.motorcycle->getColor() }}</li>
+                                <li class="list-group-item">Engine: {{ @SESSION.motorcycle->getEngine() }}</li>
+                                <li class="list-group-item">Transmission: {{ @SESSION.motorcycle->getTransmission() }}</li>
+                                <li class="list-group-item">Seats: {{ @SESSION.motorcycle->getNumSeats() }}</li>
+                            </check>
                         </ul>
                     </div>
                 </div>
@@ -46,6 +61,7 @@
             <div class= "form-group" id="btn">
                 <button type="submit" class="btn btn-primary" id="button">Create new vehicle</button>
             </div>
+            <include href="includes/footer.html"></include>
         </div>
 </form>
 </body>

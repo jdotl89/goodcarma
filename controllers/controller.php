@@ -101,7 +101,7 @@ class Controller
                $_SESSION['motorcycle'] = $motorcycle;
 
                 //Redirect to Order 2 page
-                $this->_f3->reroute('msummary');
+                $this->_f3->reroute('summary');
             }
         }
 
@@ -354,14 +354,4 @@ class Controller
         session_destroy();
     }
 
-    /**
-     *
-     */
-    public function msummary()
-    {
-        $view = new Template();
-        echo $view->render('views/msummary.html');
-
-        session_destroy();
-    }
 }
