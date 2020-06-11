@@ -165,13 +165,23 @@ class Controller
             //Data is valid
             if (empty($this->_f3->get('errors'))) {
 
-                //Create object   ////saved in session for now ////
-                $_SESSION['firstName'] = $_POST['firstName'];
-                $_SESSION['lastName'] = $_POST['lastName'];
-                $_SESSION['age'] = $_POST['age'];
-                $_SESSION['phone'] = $_POST['phone'];
-                $_SESSION['email'] = $_POST['email'];
-                $_SESSION['vehicle'] = $_POST['vehicle'];
+//                //Create object   ////saved in session for now ////
+//                $_SESSION['firstName'] = $_POST['firstName'];
+//                $_SESSION['lastName'] = $_POST['lastName'];
+//                $_SESSION['age'] = $_POST['age'];
+//                $_SESSION['phone'] = $_POST['phone'];
+//                $_SESSION['email'] = $_POST['email'];
+//                $_SESSION['vehicle'] = $_POST['vehicle'];
+
+                $userInfo = new UserInfo($_POST['firstName'],
+                    $_POST['lastName'],
+                    $_POST['age'],
+                    $_POST['email'],
+                    $_POST['phone'],
+                    $_POST['vehicle']);
+
+                //Store the object in the session array
+                $_SESSION['userInfo'] = $userInfo;
 
                 //car or bike page?
                 if($_POST['vehicle'] == 'motorcycle') {
@@ -180,16 +190,6 @@ class Controller
                 }
                 //Redirect to Vehicle Car Info form page
                 $this->_f3->reroute('vehicleForm');
-
-//                $userInfo = new UserInfo($_POST['firstName'],
-//                    $_POST['lastName'],
-//                    $_POST['age'],
-//                    $_POST['phone'],
-//                    $_POST['email'],
-//                    $_POST['vehicle']);
-//
-//                //Store the object in the session array
-//                $_SESSION['userInfo'] = $userInfo;
             }
         }
 
@@ -209,9 +209,6 @@ class Controller
      */
     public function vehicleForm()
     {
-        //var_dump($_SESSION);
-        var_dump($_POST);
-
         $this->_f3->set('allModels', getModels());
         $this->_f3->set('allMakes', getMakes());
         $this->_f3->set('allYears', getYears());
@@ -250,20 +247,12 @@ class Controller
             if (empty($this->_f3->get('errors'))) {
                 $car = new Car();
 
-                //Create object   ////saved in session for now ////
+                //Create car object
                 $car->setVin($_POST['vin']);
                 $car->setMake($_POST['make']);
                 $car->setModel($_POST['model']);
                 $car->setYear($_POST['year']);
                 $car->setColor($_POST['color']);
-
-//                //Create an order object
-//                $order = new FoodOrder();
-//                $order->setFood($_POST['food']);
-//                $order->setMeal($_POST['meal']);
-//
-//                //Store the object in the session array
-//                $_SESSION['order'] = $order;
 
                 //Redirect to Order 2 page
                 $_SESSION['automobile'] = $car;
@@ -287,8 +276,6 @@ class Controller
      */
     public function engineInterior()
     {
-        var_dump($_SESSION);
-        $car = $_SESSION['automobile'];
         $this->_f3->set('engine', getEngine());
         $this->_f3->set('transmission', getTransmission());
         $this->_f3->set('terrain', getTerrain());
@@ -298,9 +285,6 @@ class Controller
 
         //If the form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //Add the data to the object in the session array
-            //$_SESSION['order']->setCondiments($_POST['conds']);
-
             //Validate
             if (!$this->_validator->validEngine($_POST['engine'])) {
 
@@ -364,7 +348,6 @@ class Controller
      */
     public function summary()
     {
-        var_dump($_SESSION);
         $view = new Template();
         echo $view->render('views/summary.html');
 
@@ -376,7 +359,6 @@ class Controller
      */
     public function msummary()
     {
-
         $view = new Template();
         echo $view->render('views/msummary.html');
 

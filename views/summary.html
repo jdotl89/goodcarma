@@ -17,28 +17,27 @@
                 <div class="col-6">
                     <div class="card" style="width: 34rem;">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</li>
-                            <li class="list-group-item">Age: {{ @SESSION.age }}</li>
-                            <li class="list-group-item">Phone: {{ @SESSION.phone }}</li>
-                            <li class="list-group-item">Email: {{ @SESSION.email }}</li>
-                            <li class="list-group-item">VIN: {{ @SESSION.vin }}</li>
-                            <li class="list-group-item">Model: {{ @SESSION.model }}</li>
-                            <li class="list-group-item">Make: {{ @SESSION.make }}</li>
-                            <li class="list-group-item">Year: {{ @SESSION.year }}</li>
+                            <li class="list-group-item">Name: {{ @SESSION.userInfo->getFname() }} {{ @SESSION.userInfo->getLname() }}</li>
+                            <li class="list-group-item">Age: {{ @SESSION.userInfo->getAge() }}</li>
+                            <li class="list-group-item">Phone: {{ @SESSION.userInfo->getPhone() }}</li>
+                            <li class="list-group-item">Email: {{ @SESSION.userInfo->getEmail() }}</li>
+                            <li class="list-group-item">VIN: {{ @SESSION.automobile->getVIN() }}</li>
+                            <li class="list-group-item">Model: {{ @SESSION.automobile->getModel() }}}</li>
+                            <li class="list-group-item">Make: {{ @SESSION.automobile->getMake() }}</li>
+                            <li class="list-group-item">Year: {{ @SESSION.automobile->getYear() }}</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="card" style="width: 34rem;">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Color: {{ @SESSION.color }}</li>
-                            <li class="list-group-item">Engine: {{ @SESSION.engine }}</li>
-                            <li class="list-group-item">Transmission: {{ @SESSION.transmission }}</li>
-                            <li class="list-group-item">Drive Terrain: {{ @SESSION.terrain }}</li>
-                            <li class="list-group-item">Material: {{ @SESSION.material }}</li>
-                            <li class="list-group-item">Seats: {{ @SESSION.seats }}</li>
-                            <li class="list-group-item"><check if="{{ isset(@SESSION.infotainment) }}">
-                                Infotainment: {{ implode(@SESSION.infotainment, ", ") }}</check></li>
+                            <li class="list-group-item">Color: {{ @SESSION.automobile->getColor() }}</li>
+                            <li class="list-group-item">Engine: {{ @SESSION.automobile->getEngine() }}</li>
+                            <li class="list-group-item">Transmission: {{ @SESSION.automobile->getTransmission() }}</li>
+                            <li class="list-group-item">Drive Terrain: {{ @SESSION.automobile->getTerrain() }}</li>
+                            <li class="list-group-item">Material: {{ @SESSION.automobile->getMaterial() }}</li>
+                            <li class="list-group-item">Seats: {{ @SESSION.automobile->getNumSeats() }}</li>
+                            <li class="list-group-item">Infotainment: {{ implode(@SESSION.automobile->getInfotainment(), ", ") }}</li>
                         </ul>
                     </div>
                 </div>
