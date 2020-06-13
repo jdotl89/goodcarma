@@ -348,6 +348,16 @@ class Controller
      */
     public function summary()
     {
+        //Write to database
+        $GLOBALS['db']->writeUser($_SESSION['userInfo']);
+
+        if($_SESSION['userInfo']->getVehicle() == 'motorcycle'){
+            $GLOBALS['db']->writeVehicle($_SESSION['motorcycle']);
+        }
+        else {
+            $GLOBALS['db']->writeVehicle($_SESSION['automobile']);
+        }
+
         $view = new Template();
         echo $view->render('views/summary.html');
 

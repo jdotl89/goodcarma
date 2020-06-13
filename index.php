@@ -14,8 +14,8 @@ session_start();
 // Instantiate my classes
 $f3 = Base::instance();
 $validator = new Validate();
+$db = new Database();
 $controller = new Controller($f3, $validator);
-//$db = new Database();
 
 // Default route
 $f3->route('GET|POST /', function() {

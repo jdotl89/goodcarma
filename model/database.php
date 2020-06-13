@@ -1,29 +1,16 @@
 <?php
-/*
- * CREATE TABLE food_order (
- 	order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    food VARCHAR(50),
-    meal VARCHAR(10),
-    condiments VARCHAR(100),
-    date_time DATETIME DEFAULT NOW()
-)
-
-INSERT INTO food_order (food, meal, condiments)
-VALUES ('sandwich', 'breakfast', 'sriracha, mayonnaise');
- */
 
 //Require our config file
 require '/home2/akaurgre/config.php';
-
 class Database
 {
     private $_dbh;
 
     function __construct()
     {
-        //Connect to database with PDO
+        //connect to database with PDO
         try {
-            //Instantiate a database object
+            //instantiate a database object
             $this->_dbh = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
         }
         catch(PDOException $e) {
@@ -31,29 +18,25 @@ class Database
         }
     }
 
-    function write($info)
+    function writeUser($info)
     {
-        $fName = $info->getFname();
-        $lName = $info->getLname();
-        $age = $info->getAge();
-        $phone = $info->getPhone();
-        $email = $info->getEmail();
 
-        //Write to database
+//        INSERT INTO vehicle (make, model, year, color)
+//                VALUES ('BMW', 'fasdfa', 2020, 'blue')
 
-//        INSERT INTO vehicle (VIN, make, model, year, color)
-//                VALUES ('12345123451234512', 'BMW', 'fasdfa', 2020, 'blue')
-        
 //        CREATE TABLE vehicle (
-//        vehicleNum int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+//        id int  NOT NULL AUTO_INCREMENT,
 //        VIN VARCHAR(17) NOT NULL,
 //        model VARCHAR(50) NOT NULL,
 //        make VARCHAR(50) NOT NULL,
 //        year int not null,
 //        color VARCHAR(50) NOT NULL,
-//        id int not null,
+//        PRIMARY KEY (id),
 //        FOREIGN KEY (id) REFERENCES userInfo(id)
-//            );
+//           );
+
+
+        //Write to database
 
         //1. Define the query
         $sql = "INSERT INTO userInfo (fName, lName, email, phone, age)
@@ -63,14 +46,84 @@ class Database
         $statement = $this->_dbh->prepare($sql);
 
         //3. Bind the parameters
-        $statement->bindParam(':food', $order->getFood());
-        $statement->bindParam(':meal', $order->getMeal());
-        $statement->bindParam(':condiments', $conds);
+        $statement->bindParam(':fName', $info->getFname());
+        $statement->bindParam(':lName', $info->getLname());
+        $statement->bindParam(':email', $info->getEmail());
+        $statement->bindParam(':phone', $info->getPhone());
+        $statement->bindParam(':age', $info->getAge());
 
         //4. Execute the statement
         $statement->execute();
 
         //5. Process the results - SKIP
+    }
+
+    function writeVehicle($info)
+    {
+//        CREATE TABLE detail (
+//        id int  NOT NULL AUTO_INCREMENT,
+//        VIN VARCHAR(20),
+//        engine VARCHAR(50) NOT NULL,
+//        transmission VARCHAR(20) not null,
+//        terrain VARCHAR(50),
+//        material VARCHAR(50),
+//        infotainment VARCHAR(200),
+//        seats int NOT NULL,
+//        PRIMARY KEY (id),
+//        FOREIGN KEY (id) REFERENCES vehicle(id)
+//           );
+
+        //Write main vehicle info to database
+
+        $sql = "INSERT INTO vehicle (make, model, year, color)
+              VALUES (:make, :model, :year, :color)";
+
+        $statement = $this->_dbh->prepare($sql);
+
+        $statement->bindParam(':make', $info->getMake());
+        $statement->bindParam(':model', $info->getModel());
+        $statement->bindParam(':year', $info->getYear());
+        $statement->bindParam(':color', $info->getColor());
+
+        $statement->execute();
+
+        //Write extra detail of vehicle to database
+
+        if ($info instanceOf Car) {
+            $infotainment = $info->getInfotainment();
+            if (empty($infotainment)) {
+                $infotainment = "";
+            } else {
+                $infotainment = implode(", ", $infotainment);
+            }
+
+            $sql = "INSERT INTO detail (VIN, engine, transmission, terrain, material, infotainment, seats)
+              VALUES (:VIN, :engine, :transmission, :terrain, :material, :infotainment, :seats)";
+
+            $statement = $this->_dbh->prepare($sql);
+
+            $statement->bindParam(':VIN', $info->getVIN());
+            $statement->bindParam(':engine', $info->getEngine());
+            $statement->bindParam(':transmission', $info->getTransmission());
+            $statement->bindParam(':terrain', $info->getTerrain());
+            $statement->bindParam(':material', $info->getMaterial());
+            $statement->bindParam(':infotainment',$infotainment);
+            $statement->bindParam(':seats', $info->getNumSeats());
+
+            $statement->execute();
+        }
+        else {
+            $sql = "INSERT INTO detail (engine, transmission, seats)
+              VALUES (:engine, :transmission, :seats)";
+
+            $statement = $this->_dbh->prepare($sql);
+
+            $statement->bindParam(':engine', $info->getEngine());
+            $statement->bindParam(':transmission', $info->getTransmission());
+            $statement->bindParam(':seats', $info->getNumSeats());
+
+            $statement->execute();
+        }
     }
 
     function view()
