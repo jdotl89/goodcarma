@@ -6,9 +6,14 @@
 </head>
 <body>
 <form id="personal" method="post" action="#">
-    <div class="container border border-dark mt-3">
-        <nav class="navbar navbar-dark bg-dark">
+    <div class="container border-0 mt-3">
+        <nav class="navbar navbar-dark bg-dark w-100 rounded">
             <a class="navbar-brand" href="{{ @BASE }}">Home</a>
+            <div class="text-center">
+                <div>
+                    <h3 class="text-light">Good Car-Ma</h3>
+                </div>
+            </div>
         </nav>
         <br>
         <h3>Vehicle Information</h3>
@@ -16,7 +21,7 @@
 
         <div class="form-group">
             <div class="row">
-                <div class="col">
+                <div class="col-4">
                     <label for="vin"><strong>VIN</strong></label>
                     <input type="text" class="form-control" id="vin" name="vin" value="{{ @selectedVIN }}" >
                     <span class="err">
@@ -25,11 +30,7 @@
                         </check>
                     </span>
                 </div>
-            </div>
-            <br>
-
-            <div class="row">
-                <div class="col-md-4">
+                <div class="col-4">
                     <label for="make"><strong>Make</strong></label><br>
                     <select class="form-control" id="make" name="make">
                         <option value="none">Please select</option><br>
@@ -44,6 +45,30 @@
                     <span class="err">
                         <check if="{{ isset(@errors['make']) }}">
                             {{ @errors['make'] }}
+                        </check>
+                    </span>
+                </div>
+                <div class="col-4">
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="color"><strong>Color</strong></label><br>
+                    <select class="form-control" id="color" name="color">
+                        <option value="none">---</option><br>
+                        <repeat group="{{ @allColors }}" value="{{ @color}}">
+                            <option value="{{ @color }}"
+                            <check if="{{ @color == @selectedColor }}" >
+                                selected="selected"
+                            </check>
+                            >{{ ucfirst(@color) }}</option>><br>
+                        </repeat>
+                    </select>
+                    <span class="err">
+                        <check if="{{ isset(@errors['color']) }}">
+                            {{ @errors['color'] }}
                         </check>
                     </span>
                 </div>
@@ -90,22 +115,6 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <label for="color"><strong>Color</strong></label><br>
-                    <select class="form-control" id="color" name="color">
-                        <option value="none">---</option><br>
-                        <repeat group="{{ @allColors }}" value="{{ @color}}">
-                            <option value="{{ @color }}"
-                            <check if="{{ @color == @selectedColor }}" >
-                                selected="selected"
-                            </check>
-                            >{{ ucfirst(@color) }}</option>><br>
-                        </repeat>
-                    </select>
-                    <span class="err">
-                        <check if="{{ isset(@errors['color']) }}">
-                            {{ @errors['color'] }}
-                        </check>
-                    </span>
                 </div>
             </div>
 
