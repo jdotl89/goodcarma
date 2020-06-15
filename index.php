@@ -22,6 +22,11 @@ $f3->route('GET|POST /', function() {
     $GLOBALS['controller']->home();
 });
 
+// view specific vehicle route
+$f3->route('GET|POST /viewVehicle', function() {
+    $GLOBALS['controller']->viewVehicle();
+});
+
 //  personal route
 $f3->route('GET|POST /personal', function() {
     $GLOBALS['controller']->personal();

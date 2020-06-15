@@ -24,8 +24,19 @@ class Controller
      */
     public function home()
     {
+        $this->_f3->set('database', $GLOBALS['db']);
+
         $view = new Template();
         echo $view->render('views/home.html');
+    }
+
+    /**
+     * Display the specific vehicle information route
+     */
+    public function viewVehicle()
+    {
+        $view = new Template();
+        echo $view->render('views/viewVehicle.php');
     }
 
     public function motor()

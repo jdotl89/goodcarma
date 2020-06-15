@@ -128,10 +128,12 @@ class Database
 
     function view()
     {
-        //Read fro database
+        //echo "hi from db class";
+
+        //Read from database
+
         //1. Define the query
-        $sql = "SELECT * FROM food_order 
-                ORDER BY date_time DESC";
+        $sql = "SELECT * FROM vehicle";
 
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
@@ -143,6 +145,46 @@ class Database
 
         //5. Process the results
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+
+        echo "<div class=\"card-deck col-md\">";
+
+        foreach($result as $row){
+            $make = $row['make'];
+            $model = $row['model'];
+            $year = $row['year'];
+            $_SESSION['vehicleId'] = $row['id'];
+
+            echo "<div class=\"col-md-4 mb-5\">";
+            echo "<div class=\"card\">";
+            //echo "<img class=\"img-thumbnail\" src=\"...\" alt=\"vehicle\">";
+            echo "<div class=\"card-body\">";
+            echo "<p class=\"card-title text-center\"><a href=\"viewVehicle\" 
+                    target=\"_blank\" class=\"stretched-link\">$year $make $model</a></p>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+
+//            <div class="col-md-4 mb-5">
+//                <div class="card myCard">
+//                    <img class="card-img-top" src="images/dayside-logo.jpeg" alt="Dayside LLC">
+//
+//                    <div class="card-body">
+//                        <h5 class="card-title"><a href="https://afternooners.greenriverdev.com/DaysideLLC/" target="_blank" class="stretched-link">Dayside LLC</a></h5>
+//                        <p class="card-text">Created a Scrum Team Project using Agile for a client.</p>
+//                    </div>
+//                </div>
+//            </div>
+        }
+        echo "</div>";
+
+
+
+        //return $result;
+    }
+
+    function viewVehicle($id)
+    {
+        echo "hiiiiiiii";
+        //echo $id;
     }
 }
