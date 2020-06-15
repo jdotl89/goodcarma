@@ -2,7 +2,7 @@
 
 /**
  * Class Validate
- * Contains the validation class and methods
+ * Contains the validation methods
  * @author Amardip Kaur
  * @author John Laygo
  * @author Michael Gulchuk
