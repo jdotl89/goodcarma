@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Good Car-Ma</title>
+    <include href="includes/header.htm"></include>
+</head>
+<body>
+<form action="personal">
+    <div class="container border border-dark">
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ @BASE }}">Home</a>
+        </nav>
+
+
+
+        <include href="includes/footer.html"></include>
+    </div>
+</form>
+</body>
+</html>
+

@@ -30,15 +30,6 @@ class Controller
         echo $view->render('views/home.html');
     }
 
-    /**
-     * Display the specific vehicle information route
-     */
-    public function viewVehicle()
-    {
-        $view = new Template();
-        echo $view->render('views/viewVehicle.php');
-    }
-
     public function motor()
     {
         $this->_f3->set('allModels', getMModels());

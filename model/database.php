@@ -39,8 +39,8 @@ class Database
         //Write to database
 
         //1. Define the query
-        $sql = "INSERT INTO userInfo (fName, lName, email, phone, age)
-                VALUES (:fName, :lName, :email, :phone, :age)";
+        $sql = "INSERT INTO userInfo (fName, lName, email, phone, age, type)
+                VALUES (:fName, :lName, :email, :phone, :age, :type)";
 
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
@@ -51,6 +51,7 @@ class Database
         $statement->bindParam(':email', $info->getEmail());
         $statement->bindParam(':phone', $info->getPhone());
         $statement->bindParam(':age', $info->getAge());
+        $statement->bindParam(':type', $info->getVehicle());
 
         //4. Execute the statement
         $statement->execute();
@@ -128,8 +129,6 @@ class Database
 
     function view()
     {
-        //echo "hi from db class";
-
         //Read from database
 
         //1. Define the query
@@ -146,45 +145,65 @@ class Database
         //5. Process the results
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        echo "<div class=\"card-deck col-md\">";
-
         foreach($result as $row){
             $make = $row['make'];
             $model = $row['model'];
             $year = $row['year'];
-            $_SESSION['vehicleId'] = $row['id'];
+            $id = $row['id'];
+            $color = $row['color'];
 
-            echo "<div class=\"col-md-4 mb-5\">";
-            echo "<div class=\"card\">";
-            //echo "<img class=\"img-thumbnail\" src=\"...\" alt=\"vehicle\">";
-            echo "<div class=\"card-body\">";
-            echo "<p class=\"card-title text-center\"><a href=\"viewVehicle\" 
-                    target=\"_blank\" class=\"stretched-link\">$year $make $model</a></p>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
+            $sql2 = "SELECT * FROM detail WHERE id=$id";
+            $statement2 = $this->_dbh->prepare($sql2);
+            $statement2->execute();
+            $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);
 
-//            <div class="col-md-4 mb-5">
-//                <div class="card myCard">
-//                    <img class="card-img-top" src="images/dayside-logo.jpeg" alt="Dayside LLC">
-//
-//                    <div class="card-body">
-//                        <h5 class="card-title"><a href="https://afternooners.greenriverdev.com/DaysideLLC/" target="_blank" class="stretched-link">Dayside LLC</a></h5>
-//                        <p class="card-text">Created a Scrum Team Project using Agile for a client.</p>
-//                    </div>
-//                </div>
-//            </div>
+            echo "<div class=\"col-md-5 border border-dark m-3\">
+                        <div class=\"form-group\">
+                            <p class='font-weight-bold mt-2 text-center'>* $year $make $model *</p>";
+
+            echo "<p class='pl-4'><strong>SPECIFICATIONS AND FEATURES:</strong><br>";
+
+            foreach($result2 as $row2) {
+                $VIN = $row2['VIN'];
+                $engine = $row2['engine'];
+                $transmission = $row2['transmission'];
+                $terrain = $row2['terrain'];
+                $material = $row2['material'];
+                $infotainment = $row2['infotainment'];
+                $seats = $row2['seats'];
+
+                $sql3 = "SELECT * FROM userInfo WHERE id=$id";
+                $statement3 = $this->_dbh->prepare($sql3);
+                $statement3->execute();
+                $result3 = $statement3->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($result3 as $row3) {
+                    $first = $row3['fName'];
+                    $last = $row3['lName'];
+                    $phone = $row3['phone'];
+                    $type = $row3['type'];
+
+                    echo "<strong>Make:</strong> $make <br>";
+                    echo "<strong>Model:</strong> $model <br>";
+                    echo "<strong>Year:</strong> $year <br>";
+                    echo "<strong>Color:</strong> $color <br>";
+                    echo "<strong>Engine:</strong> $engine <br>";
+                    echo "<strong>Transmission:</strong> $transmission <br>";
+                    echo "<strong>Seats:</strong> $seats <br>";
+
+                    if($type == 'car1') {
+                        echo "<strong>VIN:</strong> $VIN <br>";
+                        echo "<strong>Terrain:</strong> $terrain <br>";
+                        echo "<strong>Material:</strong> $material <br>";
+                        echo "<strong>Infotainment:</strong> $infotainment <br>";
+                    }
+
+                    echo "</p>";
+                    echo "<p class='font-weight-bold'>Please contact $first $last at $phone for questions and details!</p>";
+                }
+            }
+            echo "</div>
+                  </div>";
         }
-        echo "</div>";
-
-
-
-        //return $result;
-    }
-
-    function viewVehicle($id)
-    {
-        echo "hiiiiiiii";
-        //echo $id;
     }
 }
