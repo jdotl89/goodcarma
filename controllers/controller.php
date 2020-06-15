@@ -2,10 +2,21 @@
 
 /**
  * Class Controller
+ * Contains the controller functions for each individual page in the app.
+ * @author Amardip Kaur
+ * @author John Laygo
+ * @author Michael Gulchuk
+ * @version 1.0
  */
 class Controller
 {
+    /**
+     * @var fat-free variabel
+     */
     private $_f3; //router
+    /**
+     * @var validation variable
+     */
     private $_validator; //validation object
 
     /**
@@ -30,6 +41,9 @@ class Controller
         echo $view->render('views/home.html');
     }
 
+    /**
+     * process the motor page/route
+     */
     public function motor()
     {
         $this->_f3->set('allModels', getMModels());
@@ -100,7 +114,7 @@ class Controller
 //                $order->setMeal($_POST['meal']);
 //
 //                //Store the object in the session array
-               $_SESSION['motorcycle'] = $motorcycle;
+                $_SESSION['motorcycle'] = $motorcycle;
 
                 //Redirect to Order 2 page
                 $this->_f3->reroute('summary');
@@ -274,7 +288,7 @@ class Controller
     }
 
     /**
-     *
+     * process the engineInterior page/route
      */
     public function engineInterior()
     {
@@ -346,7 +360,7 @@ class Controller
     }
 
     /**
-     *
+     * Displays the summary page/route
      */
     public function summary()
     {

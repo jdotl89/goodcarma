@@ -1,12 +1,35 @@
 <?php
 
+/**
+ * Class Car
+ * Contains the car object class and methods
+ * @author Amardip Kaur
+ * @author John Laygo
+ * @author Michael Gulchuk
+ * @version 1.0
+ */
 class Car extends Vehicle
 {
     //Declare instance variables
+    /**
+     * @var for the vin number
+     */
     private $_vin;
+    /**
+     * @var for the terrain type
+     */
     private $_terrain;
+    /**
+     * @var for the interior material type
+     */
     private $_material;
+    /**
+     * @var for the infortainment features
+     */
     private $_infotainment;
+    /**
+     * @var for the number of seats
+     */
     private $_numSeats;
 
     /** Default constructor
@@ -23,7 +46,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return mixed
+     * @return $_vin
      */
     public function getVin()
     {
@@ -31,7 +54,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @param mixed $vin
+     * @param String $vin
      */
     public function setVin($vin)
     {
@@ -39,7 +62,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @param mixed $terrain
+     * @param String $terrain
      */
     public function setTerrain($terrain)
     {
@@ -47,7 +70,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return terrain
+     * @return $t_errain
      */
     public function getTerrain()
     {
@@ -55,7 +78,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @param mixed $material
+     * @param String $material
      */
     public function setMaterial($material)
     {
@@ -63,7 +86,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @return material
+     * @return $_material
      */
     public function getMaterial()
     {
@@ -71,7 +94,7 @@ class Car extends Vehicle
     }
 
     /**
-     * @param mixed $infotainment
+     * @param String $infotainment
      */
     public function setInfotainment($infotainment)
     {
@@ -79,16 +102,10 @@ class Car extends Vehicle
     }
 
     /**
-     * @return infotainment
+     * @return $_infotainment
      */
     public function getInfotainment()
     {
         return $this->_infotainment;
     }
-
-    /** toString() returns a String representation
-     *  of an car object
-     *  @return string
-     */
-
 }

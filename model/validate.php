@@ -2,7 +2,7 @@
 
 /**
  * Class Validate
- * Contains the validation methods for my app
+ * Contains the validation class and methods
  * @author Amardip Kaur
  * @author John Laygo
  * @author Michael Gulchuk

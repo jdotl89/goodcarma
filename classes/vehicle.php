@@ -1,14 +1,43 @@
 <?php
 
+/**
+ * Class Vehicle
+ * Contains the vehicle object class and methods
+ * @author Amardip Kaur
+ * @author John Laygo
+ * @author Michael Gulchuk
+ * @version 1.0
+ */
 class Vehicle
 {
     //Declare instance variables
+    /**
+     * @var for the year
+     */
     private $_year;
+    /**
+     * @var for the maker
+     */
     private $_make;
+    /**
+     * @var for the model
+     */
     private $_model;
+    /**
+     * @var for the engine
+     */
     private $_engine;
+    /**
+     * @var for the transmission
+     */
     private $_transmission;
+    /**
+     * @var for the color
+     */
     private $_color;
+    /**
+     * @var for the number of seats
+     */
     private $_numSeats;
 
     /** Default constructor
@@ -134,7 +163,7 @@ class Vehicle
     }
 
     /**
-     * @param mixed $numSeats
+     * @param number $numSeats
      */
     public function setNumSeats($numSeats)
     {

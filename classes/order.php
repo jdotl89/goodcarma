@@ -1,13 +1,39 @@
 <?php
 
+/**
+ * Class UserInfo
+ * Contains the user info class and object methods
+ * @author Amardip Kaur
+ * @author John Laygo
+ * @author Michael Gulchuk
+ * @version 1.0
+ */
 class UserInfo
 {
     //Declare instance variables
+    /**
+     * @var for first name
+     */
     private $_fName;
+    /**
+     * @var for the last name
+     */
     private $_lName;
+    /**
+     * @var for the age
+     */
     private $_age;
+    /**
+     * @var for the phone
+     */
     private $_phone;
+    /**
+     * @var for the email
+     */
     private $_email;
+    /**
+     * @var for the type of vehicle (car /  motorcyce)
+     */
     private $_vehicle;
 
     /** Default constructor
@@ -75,11 +101,4 @@ class UserInfo
     {
         return $this->_vehicle;
     }
-
-
-    /** toString() returns a String representation
-     *  of an order object
-     *  @return string
-     */
-
 }

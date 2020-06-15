@@ -2,10 +2,25 @@
 
 //Require our config file
 require '/home2/akaurgre/config.php';
+
+/**
+ * Class Database
+ * Contains the database class and methods
+ * @author Amardip Kaur
+ * @author John Laygo
+ * @author Michael Gulchuk
+ * @version 1.0
+ */
 class Database
 {
+    /**
+     * @var PDO
+     */
     private $_dbh;
 
+    /**
+     * Database constructor.
+     */
     function __construct()
     {
         //connect to database with PDO
@@ -18,6 +33,10 @@ class Database
         }
     }
 
+    /**
+     * @param $info
+     * takes order/user object and inserts to database.
+     */
     function writeUser($info)
     {
 
@@ -35,16 +54,13 @@ class Database
 //        FOREIGN KEY (id) REFERENCES userInfo(id)
 //           );
 
-
         //Write to database
-
         //1. Define the query
         $sql = "INSERT INTO userInfo (fName, lName, email, phone, age, type)
                 VALUES (:fName, :lName, :email, :phone, :age, :type)";
 
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
-
         //3. Bind the parameters
         $statement->bindParam(':fName', $info->getFname());
         $statement->bindParam(':lName', $info->getLname());
@@ -52,13 +68,16 @@ class Database
         $statement->bindParam(':phone', $info->getPhone());
         $statement->bindParam(':age', $info->getAge());
         $statement->bindParam(':type', $info->getVehicle());
-
         //4. Execute the statement
         $statement->execute();
 
         //5. Process the results - SKIP
     }
 
+    /**
+     * @param $info
+     * takes vehicle object and inserts to database.
+     */
     function writeVehicle($info)
     {
 //        CREATE TABLE detail (
@@ -80,12 +99,10 @@ class Database
               VALUES (:make, :model, :year, :color)";
 
         $statement = $this->_dbh->prepare($sql);
-
         $statement->bindParam(':make', $info->getMake());
         $statement->bindParam(':model', $info->getModel());
         $statement->bindParam(':year', $info->getYear());
         $statement->bindParam(':color', $info->getColor());
-
         $statement->execute();
 
         //Write extra detail of vehicle to database
@@ -102,7 +119,6 @@ class Database
               VALUES (:VIN, :engine, :transmission, :terrain, :material, :infotainment, :seats)";
 
             $statement = $this->_dbh->prepare($sql);
-
             $statement->bindParam(':VIN', $info->getVIN());
             $statement->bindParam(':engine', $info->getEngine());
             $statement->bindParam(':transmission', $info->getTransmission());
@@ -110,7 +126,6 @@ class Database
             $statement->bindParam(':material', $info->getMaterial());
             $statement->bindParam(':infotainment',$infotainment);
             $statement->bindParam(':seats', $info->getNumSeats());
-
             $statement->execute();
         }
         else {
@@ -118,15 +133,16 @@ class Database
               VALUES (:engine, :transmission, :seats)";
 
             $statement = $this->_dbh->prepare($sql);
-
             $statement->bindParam(':engine', $info->getEngine());
             $statement->bindParam(':transmission', $info->getTransmission());
             $statement->bindParam(':seats', $info->getNumSeats());
-
             $statement->execute();
         }
     }
 
+    /**
+     * Selects database information and displays it in html.
+     */
     function view()
     {
         //Read from database
@@ -138,7 +154,6 @@ class Database
         $statement = $this->_dbh->prepare($sql);
 
         //3. Bind the parameters - SKIP
-
         //4. Execute the statement
         $statement->execute();
 
