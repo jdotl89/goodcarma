@@ -17,3 +17,14 @@ All user data is stored in a database and is then displayed on the home page aft
 
 All data is created through the classes using parent/child relationships. All routing and validation
 is controlled through the controller.php and is guided through the composer.json and through the index page. 
+
+Parent class: Vehicle.
+sub class: Car extends Vehicle.
+sub class: Motorcycle extends Vehicle.
+
+Database class: has method/functions that reads and writes from the database.
+
+Validation class: validation for Post_Array inputs.
+
+Controller class: contains functions for each page and each function utilizing fat-free variables, validation object methods,
+and database object methods.
